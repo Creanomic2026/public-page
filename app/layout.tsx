@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +28,23 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* 2. Tambahkan Navbar di sini (di atas children) */}
+        <nav className="fixed top-0 right-0 w-full flex justify-end items-center p-6 gap-8 z-50">
+          <Link 
+            href="/" 
+            className="text-sm font-semibold uppercase tracking-widest hover:text-zinc-500 transition-colors"
+          >
+            Home
+          </Link>
+          <Link 
+            href="/event" 
+            className="text-sm font-semibold uppercase tracking-widest hover:text-zinc-500 transition-colors"
+          >
+            Event
+          </Link>
+        </nav>
+
+        {/* Ini adalah tempat halaman Home atau Event kamu dimuat */}
         {children}
       </body>
     </html>
