@@ -1,5 +1,5 @@
 // ─── Site Metadata ────────────────────────────────────────────────────────────
-export const SITE_NAME = "CREANOMIC 2025";
+export const SITE_NAME = "CREANOMIC 2026";
 export const SITE_DESCRIPTION =
   "Creative Economic Expo — Festival ekonomi kreatif tahunan Fakultas Vokasi Universitas Brawijaya. Blooming Innovation, Creating Impact.";
 export const SITE_URL = "https://creanomic.com";
@@ -11,8 +11,8 @@ export const ORGANIZER = "Fakultas Vokasi Universitas Brawijaya";
 export const ORGANIZER_SHORT = "FV UB";
 
 // ─── Event Info ───────────────────────────────────────────────────────────────
-export const EVENT_YEAR = 2025;
-export const EVENT_DATE = "Oktober 2025";
+export const EVENT_YEAR = 2026;
+export const EVENT_DATE = "Oktober 2026";
 export const EVENT_LOCATION = "Malang, Jawa Timur";
 export const EVENT_DURATION = "3 Hari";
 

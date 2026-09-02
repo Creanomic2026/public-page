@@ -15,9 +15,9 @@ export const metadata: Metadata = {
   keywords: [
     "CREANOMIC", "Creative Economic Expo", "Festival Ekonomi Kreatif",
     "Universitas Brawijaya", "Fakultas Vokasi", "UMKM", "Wirausaha",
-    "Kompetisi Bisnis", "Malang", "2025", "Innovation", "Creative Economy",
+    "Kompetisi Bisnis", "Malang", "2026", "Innovation", "Creative Economy",
   ],
-  authors: [{ name: "Tim CREANOMIC 2025", url: SITE_URL }],
+  authors: [{ name: "Tim CREANOMIC 2026", url: SITE_URL }],
   creator: "Fakultas Vokasi Universitas Brawijaya",
   openGraph: {
     type:        "website",

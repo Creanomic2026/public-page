@@ -34,7 +34,7 @@ export default function SponsorSection() {
         <SectionHeader
           eyebrow="Pendukung Kami"
           title="Sponsors & Media Partners"
-          subtitle="CREANOMIC 2025 didukung oleh berbagai mitra terpercaya dari dunia industri dan media."
+          subtitle="CREANOMIC 2026 didukung oleh berbagai mitra terpercaya dari dunia industri dan media."
           className="mb-16"
         />
 
