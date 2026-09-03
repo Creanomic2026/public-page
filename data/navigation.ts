@@ -1,12 +1,10 @@
 import type { NavItem } from "@/types";
 
 export const NAV_LINKS: NavItem[] = [
-  { label: "Beranda", href: "#hero" },
-  { label: "Tentang", href: "#about" },
-  { label: "Visi & Misi", href: "#visi-misi" },
-  { label: "Filosofi", href: "#filosofi" },
-  { label: "Maskot", href: "#maskot" },
-  { label: "Event", href: "#event" },
-  { label: "Sponsor", href: "#sponsor" },
-  { label: "Kontak", href: "#kontak" },
+  { label: "Home", href: "/" },
+  { label: "Event", href: "/event" },
+  { label: "Merchandise", href: "/merch" },
+  { label: "Competition", href: "/competition" },
+  { label: "Talkshow", href: "/talkshow" },
+  { label: "Registrasi", href: "/registrasi" },
 ];

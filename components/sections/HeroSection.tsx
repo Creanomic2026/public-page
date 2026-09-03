@@ -1,6 +1,6 @@
 import Icon from "@/components/ui/Icon";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
-import { SITE_NAME, SITE_TAGLINE, SITE_EYEBROW, EVENT_DATE, EVENT_LOCATION } from "@/lib/constants";
+import { SITE_NAME, SITE_TAGLINE, EVENT_DATE, EVENT_LOCATION } from "@/lib/constants";
 
 /**
  * Hero Section — "Vibrant Kinetic" first impression.
@@ -64,34 +64,6 @@ export default function HeroSection() {
 
       {/* ── Main Content ── */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 md:px-8 pt-28 pb-12">
-
-        {/* Eyebrow badge */}
-        <div
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border mb-6"
-          style={{
-            borderColor: "rgba(42,130,231,0.4)",
-            backgroundColor: "rgba(42,130,231,0.08)",
-          }}
-        >
-          <span
-            className="w-1.5 h-1.5 rounded-full animate-pulse"
-            style={{ backgroundColor: "var(--brand-sky-blue)" }}
-          />
-          <span
-            className="text-[11px] font-semibold uppercase tracking-[0.12em]"
-            style={{ fontFamily: "var(--font-label)", color: "var(--brand-sky-blue)" }}
-          >
-            {SITE_EYEBROW}
-          </span>
-        </div>
-
-        {/* Rum Raisin tagline (above main title) */}
-        <p
-          className="text-lg md:text-2xl mb-3 opacity-80"
-          style={{ fontFamily: "var(--font-hero)", color: "var(--on-surface)" }}
-        >
-          Blooming Innovation
-        </p>
 
         {/* Main title — Oswald display-xl */}
         <h1

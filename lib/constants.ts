@@ -4,7 +4,6 @@ export const SITE_DESCRIPTION =
   "Creative Economic Expo — Festival ekonomi kreatif tahunan Fakultas Vokasi Universitas Brawijaya. Blooming Innovation, Creating Impact.";
 export const SITE_URL = "https://creanomic.com";
 export const SITE_TAGLINE = "Shaping Innovation, Creating Impact";
-export const SITE_EYEBROW = "A Festival of Innovation & Creativity";
 
 // ─── Organization ─────────────────────────────────────────────────────────────
 export const ORGANIZER = "Fakultas Vokasi Universitas Brawijaya";
