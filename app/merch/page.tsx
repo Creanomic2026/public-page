@@ -23,50 +23,6 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#111B5E] text-white">
 
-      {/* NAVBAR */}
-      <nav className="flex items-center justify-between px-6 py-6 md:px-12">
-        <h1 className="text-xl font-bold tracking-tight text-white">
-          CREANOMIC
-          <span className="text-[#D6087D]">.</span>
-        </h1>
-
-        <div className="hidden gap-8 text-sm font-medium md:flex">
-          <a
-            href="#"
-            className="transition hover:text-[#D6087D]"
-          >
-            HOME
-          </a>
-
-          <a
-            href="#"
-            className="transition hover:text-[#D6087D]"
-          >
-            ABOUT
-          </a>
-
-          <a
-            href="#"
-            className="transition hover:text-[#D6087D]"
-          >
-            EVENT
-          </a>
-
-          <a
-            href="#"
-            className="text-[#2F83DD]"
-          >
-            MERCH
-          </a>
-        </div>
-
-        <button
-          className="rounded-full border border-[#2F83DD] px-5 py-2 text-sm font-medium text-white transition hover:bg-[#2F83DD] hover:border-[#2F83DD]"
-        >
-          CONTACT
-        </button>
-      </nav>
-
       {/* HERO */}
       <section className="relative overflow-hidden px-6 pb-20 pt-16 md:px-12 md:pb-28 md:pt-24">
 
