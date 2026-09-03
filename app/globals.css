@@ -1,26 +1,43 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg-primary: #0b0c10;
+  --color-bg-surface: #161722;
+  --color-surface-dim: #0c0f10;
+  --color-surface-elevated: #1d2021;
+  --color-bg-glass: rgba(30, 31, 43, 0.6);
+  --color-text-main: #ffffff;
+  --color-text-primary: #e1e3e4;
+  --color-text-secondary: rgba(225, 227, 228, 0.7);
+  --color-text-muted: #94a3b8;
+  --color-border: #2a2c3d;
+  --color-border-subtle: rgba(82, 42, 146, 0.35);
+  --color-border-hover: rgba(224, 37, 206, 0.5);
+  --brand-deep-blue: #0d2680;
+  --brand-magenta: #e025ce;
+  --brand-purple: #522a92;
+  --brand-sky-blue: #2a82e7;
+  --gradient-primary: linear-gradient(135deg, #522a92 0%, #e025ce 100%);
+  --gradient-hero: linear-gradient(135deg, #0d2680 0%, #522a92 50%, #e025ce 100%);
+  --gradient-text: linear-gradient(135deg, #b9c3ff 0%, #d4bbff 40%, #ffb0ce 100%);
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --glow-magenta: 0 0 30px rgba(224, 37, 206, 0.35);
+  --glow-sky: 0 0 20px rgba(42, 130, 231, 0.5), 0 0 40px rgba(42, 130, 231, 0.2);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-noto-sans), sans-serif;
 }
+::selection { background: var(--brand-magenta); color: white; }
+.font-display { font-family: var(--font-oswald), sans-serif; }
+.font-label { font-family: var(--font-montserrat), sans-serif; }
+.font-accent { font-family: var(--font-rum-raisin), serif; }
+.text-gradient { background: var(--gradient-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.grid-lines { background-image: linear-gradient(rgba(82,42,146,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(82,42,146,.12) 1px, transparent 1px); background-size: 56px 56px; }
+.glass-card { background: var(--color-bg-glass); border: 1px solid var(--color-border-subtle); backdrop-filter: blur(12px); }
