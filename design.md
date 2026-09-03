@@ -31,7 +31,7 @@ Dokumen ini berisi spesifikasi sistem desain (Design Tokens, Komponen UI, dan At
 
 ## 3. Typography Tokens
 
-* **Font Family:** `Inter`, `Plus Jakarta Sans`, atau Sans-Serif modern.
+* **Font Family:** `Oswald`, `Noto Sans`, `Rum Raisin`, atau Sans-Serif modern.
 * **Font Weights:** `400` (Regular), `500` (Medium), `600` (SemiBold), `700` (Bold), `800` (ExtraBold).
 
 | Scale | Size | Line Height | Usage |
