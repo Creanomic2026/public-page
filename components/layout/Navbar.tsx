@@ -45,7 +45,7 @@ export default function Navbar() {
 
           {/* ── Logo ── */}
           <a
-            href="#hero"
+            href="/"
             className="flex items-center gap-3 group shrink-0"
             aria-label={SITE_NAME}
           >
@@ -101,7 +101,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
             <a
-              href="#kontak"
+              href="/kontak"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-300 hover:shadow-[var(--glow-btn)] hover:opacity-90"
               style={{
                 fontFamily: "var(--font-label)",
@@ -169,7 +169,7 @@ export default function Navbar() {
             ))}
             <div className="pt-2 border-t" style={{ borderColor: "var(--outline-variant)" }}>
               <a
-                href="#kontak"
+                href="/kontak"
                 className="flex items-center justify-center gap-2 px-4 py-3 rounded-full text-sm font-semibold text-white"
                 style={{
                   fontFamily: "var(--font-label)",
