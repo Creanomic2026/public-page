@@ -66,12 +66,6 @@ export function useTheme() {
  */
 export const THEME_INIT_SCRIPT = `
 (function() {
-  try {
-    var saved = localStorage.getItem('creanomic-theme');
-    var theme = (saved === 'light' || saved === 'dark') ? saved : 'dark';
-    document.documentElement.setAttribute('data-theme', theme);
-  } catch(e) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-  }
+  document.documentElement.setAttribute('data-theme', 'dark');
 })();
 `.trim();
