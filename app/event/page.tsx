@@ -37,12 +37,20 @@ const events = [
 
 export default function EventPage() {
   return (
+    
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] py-20 px-6 sm:px-12 lg:px-24">
+
+      {/* --- EFEK VISUAL: Dekorasi Glow Latar Belakang --- */}
+      <div className="absolute left-1/4 top-1/4 h-96 w-96 animate-pulse rounded-full bg-[#522A92] opacity-20 mix-blend-screen blur-[120px]"></div>
+      <div className="absolute bottom-1/4 right-1/4 h-[500px] w-[500px] rounded-full bg-[#0D2680] opacity-30 mix-blend-screen blur-[150px]"></div>
+
       <div className="max-w-6xl mx-auto">
         
         {/* Judul Halaman */}
-        <h1 className="text-4xl md:text-6xl font-bold text-center mb-20 tracking-wide uppercase">
-          Our Events
+        <h1 className="mb-6 font-['Oswald'] text-5xl font-bold leading-[1.1] tracking-tight text-[#FFFFFF] md:text-[72px] text-center" >
+          Our <span className="bg-gradient-to-br from-[#0D2680] via-[#522A92] to-[#E025CE] bg-clip-text text-transparent">
+            Events 
+          </span>
         </h1>
 
         {/* List Acara */}
@@ -69,10 +77,10 @@ export default function EventPage() {
                 <span className="text-sm font-semibold tracking-widest text-zinc-500 mb-2">
                   EVENT #{event.id}
                 </span>
-                <h2 className="text-3xl font-extrabold mb-6">
+                <h2 className="font-['Oswald'] text-3xl font-bold leading-[1.2] tracking-tight text-[#FFFFFF]">
                   {event.title}
                 </h2>
-                <p className="text-base leading-relaxed text-zinc-700 dark:text-zinc-300 text-justify">
+                <p className="mx-auto mb-[48px] max-w-2xl font-['Noto_Sans'] text-[18px] leading-[28px] text-[#E1E3E4]">
                   {event.description}
                 </p>
               </div>

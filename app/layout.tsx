@@ -1,69 +1,38 @@
 import type { Metadata } from "next";
+import { Dancing_Script, Montserrat, Noto_Sans, Oswald, Rum_Raisin } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import { ThemeProvider, THEME_INIT_SCRIPT } from "@/lib/theme";
-import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, SITE_TAGLINE } from "@/lib/constants";
+import Link from "next/link";
+
+const notoSans = Noto_Sans({ variable: "--font-noto-sans", subsets: ["latin"] });
+const oswald = Oswald({ variable: "--font-oswald", subsets: ["latin"] });
+const montserrat = Montserrat({ variable: "--font-montserrat", subsets: ["latin"] });
+const rumRaisin = Rum_Raisin({ variable: "--font-rum-raisin", weight: "400", subsets: ["latin"] });
+const dancingScript = Dancing_Script({ variable: "--font-dancing-script", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: {
-    default: `${SITE_NAME} — ${SITE_TAGLINE}`,
-    template: `%s | ${SITE_NAME}`,
-  },
-  description: SITE_DESCRIPTION,
-  metadataBase: new URL(SITE_URL),
-  keywords: [
-    "CREANOMIC", "Creative Economic Expo", "Festival Ekonomi Kreatif",
-    "Universitas Brawijaya", "Fakultas Vokasi", "UMKM", "Wirausaha",
-    "Kompetisi Bisnis", "Malang", "2026", "Innovation", "Creative Economy",
-  ],
-  authors: [{ name: "Tim CREANOMIC 2026", url: SITE_URL }],
-  creator: "Fakultas Vokasi Universitas Brawijaya",
-  openGraph: {
-    type:        "website",
-    url:         SITE_URL,
-    title:       `${SITE_NAME} — ${SITE_TAGLINE}`,
-    description: SITE_DESCRIPTION,
-    siteName:    SITE_NAME,
-  },
-  twitter: {
-    card:        "summary_large_image",
-    title:       `${SITE_NAME} — ${SITE_TAGLINE}`,
-    description: SITE_DESCRIPTION,
-  },
-  robots: { index: true, follow: true },
+  title: "CREANOMIC 2026 | Blooming Innovation",
+  description: "Creative economy festival by Fakultas Vokasi Universitas Brawijaya.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="id" suppressHydrationWarning>
-      <head>
-        {/* Anti-flash theme script — runs BEFORE React hydration */}
-        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
-        {/* Preconnect for Google Fonts performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
-      <body className="antialiased transition-colors duration-300">
-        {/* Skip to content (accessibility) */}
-        <a
-          href="#hero"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100]
-            focus:px-4 focus:py-2 focus:rounded-full focus:text-sm focus:font-semibold focus:text-white"
-          style={{ background: "linear-gradient(135deg, #522A92, #D20A81)" }}
-        >
-          Skip to main content
-        </a>
-
-        <ThemeProvider>
-          <Navbar />
-          <main id="main-content">
-            {children}
-          </main>
-          <Footer />
-        </ThemeProvider>
+    <html lang="en">
+      <body className={`${notoSans.variable} ${oswald.variable} ${montserrat.variable} ${rumRaisin.variable} ${dancingScript.variable}`}>
+        <nav className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-8">
+          <div className="mx-auto flex max-w-[1280px] items-center justify-between rounded-full border border-[var(--color-border-subtle)] bg-[rgba(12,15,16,.78)] px-5 py-3 backdrop-blur-xl md:px-7">
+            <Link href="/" className="font-display text-xl font-bold tracking-[.12em] text-white">CREA<span className="text-[var(--brand-magenta)]">NOMIC</span></Link>
+            <div className="flex items-center gap-4 md:gap-7">
+              <Link href="/" className="font-label text-[10px] font-semibold uppercase tracking-[.12em] text-[var(--color-text-secondary)] transition hover:text-white md:text-xs">Home</Link>
+              <Link href="/event" className="font-label text-[10px] font-semibold uppercase tracking-[.12em] text-[var(--color-text-secondary)] transition hover:text-white md:text-xs">Events</Link>
+              <Link href="/cta" className="font-label text-[10px] font-semibold uppercase tracking-[.12em] text-[var(--color-text-secondary)] transition hover:text-white md:text-xs">Register</Link>
+            </div>
+          </div>
+        </nav>
+        {children}
       </body>
     </html>
   );

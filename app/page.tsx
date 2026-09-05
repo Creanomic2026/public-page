@@ -1,50 +1,17 @@
-import HeroSection     from "@/components/sections/HeroSection";
-import AboutSection    from "@/components/sections/AboutSection";
-import VisiMisiSection from "@/components/sections/VisiMisiSection";
-import FilosofiSection from "@/components/sections/FilosofiSection";
-import MascotSection   from "@/components/sections/MascotSection";
-import EventSection    from "@/components/sections/EventSection";
-import SponsorSection  from "@/components/sections/SponsorSection";
-import ContactSection  from "@/components/sections/ContactSection";
+import Link from "next/link";
 
-/**
- * Homepage — Orchestrates all page sections in order.
- * Each section is a standalone component in components/sections/.
- * Add, remove, or reorder sections here.
- *
- * Section separators use thin gradient lines instead of the
- * old CloudDivider component, keeping the Vibrant Kinetic aesthetic.
- */
-function SectionDivider() {
-  return (
-    <div
-      className="h-px w-full max-w-[1280px] mx-auto"
-      style={{
-        background:
-          "linear-gradient(90deg, transparent 0%, rgba(82,42,146,0.4) 30%, rgba(210,10,129,0.4) 70%, transparent 100%)",
-      }}
-    />
-  );
-}
+const highlights = [["05", "Signature Events"], ["∞", "Creative Possibilities"], ["2026", "A New Chapter"]];
 
-export default function HomePage() {
-  return (
-    <>
-      <HeroSection />
-      <SectionDivider />
-      <AboutSection />
-      <SectionDivider />
-      <VisiMisiSection />
-      <SectionDivider />
-      <FilosofiSection />
-      <SectionDivider />
-      <MascotSection />
-      <SectionDivider />
-      <EventSection />
-      <SectionDivider />
-      <SponsorSection />
-      <SectionDivider />
-      <ContactSection />
-    </>
-  );
+export default function Home() {
+  return <main className="overflow-hidden">
+    <section className="grid-lines relative isolate flex min-h-screen items-center px-4 pb-16 pt-32 md:px-8">
+      <div className="absolute -left-32 top-24 -z-10 h-80 w-80 rounded-full bg-[var(--brand-deep-blue)]/70 blur-[120px]" />
+      <div className="absolute -right-24 bottom-8 -z-10 h-96 w-96 rounded-full bg-[var(--brand-magenta)]/35 blur-[130px]" />
+      <div className="mx-auto grid w-full max-w-[1280px] gap-12 lg:grid-cols-[1.15fr_.85fr] lg:items-center">
+        <div><p className="font-label mb-5 text-xs font-bold uppercase tracking-[.22em] text-[var(--brand-sky-blue)]">Fakultas Vokasi UB presents · 2026</p><p className="font-accent mb-1 text-3xl text-[#ffb0ce] md:text-4xl">A movement for</p><h1 className="font-display max-w-3xl text-6xl font-bold uppercase leading-[.92] tracking-[-.03em] text-white sm:text-7xl md:text-8xl">Blooming <span className="text-gradient">Innovation</span></h1><p className="mt-7 max-w-xl text-base leading-7 text-[var(--color-text-secondary)] md:text-lg md:leading-8">Ruang bertemunya ide berani, karya kreatif, dan energi generasi baru. Mari tumbuh bersama dalam festival ekonomi kreatif paling hidup tahun ini.</p><div className="mt-9 flex flex-wrap gap-4"><Link href="/cta" className="font-label rounded-full bg-[var(--gradient-primary)] px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-white transition hover:scale-[1.03] hover:shadow-[var(--glow-magenta)]">Join the movement →</Link><Link href="/event" className="font-label rounded-full border border-[var(--brand-sky-blue)]/70 bg-[var(--color-bg-glass)] px-7 py-3.5 text-sm font-semibold uppercase tracking-wide text-white transition hover:shadow-[var(--glow-sky)]">Explore events</Link></div></div>
+        <div className="glass-card relative min-h-[360px] overflow-hidden rounded-[var(--radius-xl)] p-7 md:min-h-[440px] md:p-10"><div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_25%,rgba(224,37,206,.52),transparent_28%),radial-gradient(circle_at_25%_78%,rgba(42,130,231,.45),transparent_34%)]" /><span className="absolute right-8 top-7 text-5xl text-[#ffb0ce]">✦</span><span className="absolute bottom-10 left-8 text-4xl text-[var(--brand-sky-blue)]">⚡</span><div className="relative flex h-full min-h-[300px] flex-col justify-end border border-white/15 p-6 md:min-h-[360px]"><p className="font-label text-xs font-bold uppercase tracking-[.2em] text-white/70">The creative economy festival</p><p className="font-display mt-3 text-5xl font-bold uppercase leading-none text-white">Make<br />your spark<br /><span className="text-[#ffb0ce]">matter.</span></p></div></div>
+      </div>
+    </section>
+    <section className="border-y border-[var(--color-border)] bg-[var(--color-surface-dim)] px-4 py-10 md:px-8"><div className="mx-auto grid max-w-[1280px] grid-cols-1 divide-y divide-[var(--color-border)] sm:grid-cols-3 sm:divide-x sm:divide-y-0">{highlights.map(([value, label]) => <div key={label} className="px-6 py-5 text-center"><p className="font-display text-4xl font-bold text-white">{value}</p><p className="font-label mt-1 text-[11px] uppercase tracking-[.14em] text-[var(--color-text-muted)]">{label}</p></div>)}</div></section>
+  </main>;
 }
