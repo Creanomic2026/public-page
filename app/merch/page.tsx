@@ -1,65 +1,55 @@
+"use client";
+
 const products = [
   {
     name: "Event T-Shirt",
-    category: "APPAREL",
+    category: "PAKAIAN",
     price: "Rp85.000",
     image: "https://placehold.co/600x750?text=T-Shirt",
   },
   {
     name: "Event Tote Bag",
-    category: "ACCESSORIES",
+    category: "AKSESORIS",
     price: "Rp45.000",
     image: "https://placehold.co/600x750?text=Tote+Bag",
   },
   {
     name: "Event Lanyard",
-    category: "ACCESSORIES",
+    category: "AKSESORIS",
     price: "Rp25.000",
     image: "https://placehold.co/600x750?text=Lanyard",
   },
 ];
 
-export default function Home() {
+export default function MerchPage() {
   return (
-    <main className="min-h-screen bg-[#111B5E] text-white">
+    <section className="min-h-screen" style={{ backgroundColor: "var(--surface)" }}>
 
       {/* HERO */}
-      <section className="relative overflow-hidden px-6 pb-20 pt-16 md:px-12 md:pb-28 md:pt-24">
-
-        {/* BACKGROUND GLOW */}
-        <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-[#D6087D] opacity-20 blur-[120px]" />
-
-        <div className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-[#2F83DD] opacity-20 blur-[120px]" />
+      <section className="relative overflow-hidden px-6 pb-20 pt-28 md:px-12 md:pb-28 md:pt-36">
+        <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full opacity-20 blur-[120px]" style={{ backgroundColor: "var(--brand-magenta)" }} />
+        <div className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full opacity-20 blur-[120px]" style={{ backgroundColor: "var(--brand-sky-blue)" }} />
 
         <div className="relative mx-auto max-w-7xl">
-
-          <p className="mb-5 text-sm font-medium tracking-[0.3em] text-[#2F83DD]">
+          <p className="mb-5 font-label text-sm font-medium tracking-[0.3em]" style={{ color: "var(--brand-sky-blue)" }}>
             CREANOMIC 2026
           </p>
-
-          <h2 className="max-w-4xl text-5xl font-bold leading-[0.95] tracking-tight md:text-8xl">
-            WEAR THE
+          <h2 className="font-display max-w-4xl text-5xl font-bold leading-[0.95] tracking-tight md:text-8xl" style={{ color: "var(--on-surface)" }}>
+            PAKAI
             <br />
-
-            <span className="font-light italic text-[#D6087D]">
-              MOMENT.
-            </span>
+            <span className="text-gradient font-light italic">MOMENNYA.</span>
           </h2>
-
           <div className="mt-10 flex flex-col justify-between gap-8 md:flex-row md:items-end">
-
-            <p className="max-w-md text-base leading-relaxed text-white/70">
-              Bring the spirit of Creanomic wherever you go. Discover our
-              official merchandise collection.
+            <p className="max-w-md font-body text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+              Bawa semangat Creanomic ke mana pun kamu pergi. Temukan koleksi merchandise resmi kami.
             </p>
-
             <a
               href="#merchandise"
-              className="w-fit rounded-full bg-[#2F83DD] px-7 py-3 text-sm font-medium text-white shadow-lg shadow-[#2F83DD]/30 transition hover:bg-[#D6087D] hover:shadow-[#D6087D]/30"
+              className="w-fit rounded-full px-7 py-3 font-label text-sm font-medium text-white shadow-lg transition hover:opacity-90"
+              style={{ backgroundColor: "var(--brand-sky-blue)", boxShadow: "0 4px 20px rgba(42,130,231,0.3)" }}
             >
-              SHOP MERCH →
+              LIHAT MERCH →
             </a>
-
           </div>
         </div>
       </section>
@@ -67,96 +57,83 @@ export default function Home() {
       {/* MERCHANDISE */}
       <section
         id="merchandise"
-        className="relative overflow-hidden bg-gradient-to-br from-[#17328F] via-[#592C98] to-[#D6087D] px-6 py-20 md:px-12 md:py-28"
+        className="relative overflow-hidden px-6 py-20 md:px-12 md:py-28"
+        style={{ backgroundColor: "var(--card-bg-subtle)" }}
       >
-
-        {/* DECORATIVE GLOW */}
-        <div className="pointer-events-none absolute -right-40 top-20 h-[450px] w-[450px] rounded-full bg-[#2F83DD] opacity-20 blur-[120px]" />
-
-        <div className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-[#D6087D] opacity-20 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-40 top-20 h-[450px] w-[450px] rounded-full opacity-20 blur-[120px]" style={{ backgroundColor: "var(--brand-sky-blue)" }} />
+        <div className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full opacity-20 blur-[120px]" style={{ backgroundColor: "var(--brand-magenta)" }} />
 
         <div className="relative mx-auto max-w-7xl">
-
-          {/* SECTION HEADER */}
           <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
-
             <div>
-              <p className="mb-3 text-sm font-medium tracking-[0.25em] text-[#2F83DD]">
-                OFFICIAL COLLECTION
+              <p className="mb-3 font-label text-sm font-medium tracking-[0.25em]" style={{ color: "var(--brand-sky-blue)" }}>
+                KOLEKSI RESMI
               </p>
-
-              <h3 className="text-4xl font-bold tracking-tight text-white md:text-6xl">
-                OUR MERCHANDISE
+              <h3 className="font-display text-4xl font-bold tracking-tight md:text-6xl" style={{ color: "var(--on-surface)" }}>
+                MERCHANDISE KAMI
               </h3>
             </div>
-
-            <p className="max-w-sm text-sm leading-relaxed text-white/70">
-              Limited pieces created to keep your Creanomic experience alive.
+            <p className="max-w-sm font-body text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+              Koleksi terbatas yang dibuat untuk menjaga pengalaman Creanomic kamu tetap hidup.
             </p>
-
           </div>
 
-          {/* PRODUCT GRID */}
-          <div className="grid gap-6 md:grid-cols-3">
-
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             {products.map((product, index) => (
-
               <div
                 key={product.name}
-                className="group rounded-2xl border border-white/10 bg-[#111B5E]/50 p-4 backdrop-blur-sm transition duration-300 hover:-translate-y-2 hover:border-[#2F83DD]/60"
+                className="group rounded-2xl border p-4 backdrop-blur-sm transition duration-300 hover:-translate-y-2"
+                style={{
+                  borderColor: "var(--card-border)",
+                  backgroundColor: "var(--card-bg-subtle)",
+                }}
               >
-
-                {/* PRODUCT IMAGE */}
                 <div
-                  className={`overflow-hidden rounded-xl ${
-                    index === 0
-                      ? "bg-[#17328F]"
-                      : index === 1
-                      ? "bg-[#D6087D]"
-                      : "bg-[#592C98]"
-                  }`}
+                  className="overflow-hidden rounded-xl"
+                  style={{
+                    backgroundColor: index === 0 ? "var(--brand-deep-blue)" : index === 1 ? "var(--brand-magenta)" : "var(--brand-purple)",
+                  }}
                 >
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-105"
+                    className="aspect-square w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                 </div>
-
-                {/* PRODUCT INFO */}
                 <div className="flex items-start justify-between pt-5">
-
                   <div>
-                    <p className="mb-2 text-xs tracking-[0.2em] text-[#2F83DD]">
+                    <p className="mb-2 font-label text-xs tracking-[0.2em]" style={{ color: "var(--brand-sky-blue)" }}>
                       {product.category}
                     </p>
-
-                    <h4 className="text-lg font-semibold text-white">
+                    <h4 className="font-display text-lg font-semibold" style={{ color: "var(--on-surface)" }}>
                       {product.name}
                     </h4>
                   </div>
-
-                  <p className="text-sm font-medium text-[#D6087D]">
+                  <p className="font-label text-sm font-medium" style={{ color: "var(--brand-magenta)" }}>
                     {product.price}
                   </p>
-
                 </div>
-
-                {/* ORDER BUTTON */}
                 <button
-                  className="mt-5 w-full rounded-full border border-[#2F83DD] py-3 text-sm font-medium text-white transition hover:bg-[#2F83DD] hover:border-[#2F83DD] hover:shadow-lg hover:shadow-[#2F83DD]/30"
+                  className="mt-5 w-full rounded-full border py-3 font-label text-sm font-medium text-white transition hover:shadow-lg"
+                  style={{
+                    borderColor: "var(--brand-sky-blue)",
+                    backgroundColor: "transparent",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.target as HTMLElement).style.backgroundColor = "var(--brand-sky-blue)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.target as HTMLElement).style.backgroundColor = "transparent";
+                  }}
                 >
-                  ORDER NOW
+                  PESAN SEKARANG
                 </button>
-
               </div>
-
             ))}
-
           </div>
         </div>
       </section>
 
-    </main>
+    </section>
   );
 }

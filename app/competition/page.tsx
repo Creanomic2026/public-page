@@ -151,7 +151,8 @@ function CompetitionBadge({
       onClick={onClick}
       aria-pressed={isActive}
       id={`badge-${competition.slug}`}
-      className="group flex flex-col items-center gap-3 transition-all duration-300 focus:outline-none"
+      className="group relative flex flex-col items-center gap-3 cursor-pointer transition-all duration-300 focus:outline-none"
+      style={{ zIndex: isActive ? 10 : 1 }}
     >
       <div
         className="relative w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center transition-all duration-300"
@@ -164,7 +165,7 @@ function CompetitionBadge({
       >
         <svg
           viewBox="0 0 100 100"
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 w-full h-full pointer-events-none"
           aria-hidden="true"
         >
           <polygon
@@ -172,18 +173,18 @@ function CompetitionBadge({
             fill={isActive ? competition.colorHex : "var(--surface-container)"}
             stroke={competition.colorHex}
             strokeWidth="2.5"
-            className="transition-all duration-300"
+            className="transition-all duration-300 pointer-events-none"
           />
         </svg>
         <div
-          className="relative z-10 text-2xl sm:text-3xl transition-transform duration-300 group-hover:scale-110"
+          className="relative z-10 pointer-events-none text-2xl sm:text-3xl transition-transform duration-300 group-hover:scale-110"
           style={{ color: isActive ? "#FFFFFF" : competition.colorHex }}
         >
           <competition.Icon />
         </div>
       </div>
       <span
-        className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-center leading-tight transition-colors duration-300"
+        className="pointer-events-none text-[10px] sm:text-xs font-bold uppercase tracking-widest text-center leading-tight transition-colors duration-300"
         style={{
           fontFamily: "var(--font-label)",
           color: isActive ? competition.colorHex : "var(--text-secondary)",
@@ -192,81 +193,6 @@ function CompetitionBadge({
       >
         {competition.shortName}
       </span>
-    </button>
-  );
-}
-
-// ─── Card Component ────────────────────────────────────────────────────────────
-
-function CompetitionCard({
-  competition,
-  isActive,
-  onClick,
-}: {
-  competition: Competition;
-  isActive: boolean;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      onClick={onClick}
-      id={`card-${competition.slug}`}
-      aria-expanded={isActive}
-      className="group relative rounded-[var(--radius-xl)] border text-left w-full transition-all duration-300 overflow-hidden focus:outline-none"
-      style={{
-        backgroundColor: isActive
-          ? `${competition.colorHex}18`
-          : "var(--card-bg-subtle)",
-        borderColor: isActive ? competition.colorHex : "var(--card-border)",
-        boxShadow: isActive
-          ? `0 0 32px ${competition.colorHex}35, 0 4px 16px rgba(0,0,0,0.3)`
-          : "none",
-        backdropFilter: "blur(10px)",
-        WebkitBackdropFilter: "blur(10px)",
-      }}
-    >
-      <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-        style={{
-          background: `radial-gradient(ellipse 60% 50% at 50% 0%, ${competition.colorHex}15, transparent 70%)`,
-        }}
-      />
-      <div className="relative z-10 p-6 flex flex-col items-center justify-center text-center gap-4">
-        <div
-          className="w-16 h-16 rounded-[var(--radius-lg)] flex items-center justify-center text-3xl transition-transform duration-300 group-hover:scale-110"
-          style={{
-            backgroundColor: `${competition.colorHex}20`,
-            border: `1px solid ${competition.colorHex}40`,
-            color: competition.colorHex,
-          }}
-        >
-          <competition.Icon />
-        </div>
-        <div>
-          <span
-            className="block text-[10px] font-bold uppercase tracking-widest mb-1 opacity-60"
-            style={{ fontFamily: "var(--font-label)", color: competition.colorHex }}
-          >
-          </span>
-          <h3
-            className="text-lg md:text-xl font-bold leading-tight transition-colors duration-300"
-            style={{
-              fontFamily: "var(--font-display)",
-              color: isActive ? competition.colorHex : "var(--on-surface)",
-            }}
-          >
-            {competition.name}
-          </h3>
-        </div>
-        {isActive && (
-          <div
-            className="absolute bottom-0 left-0 right-0 h-[3px]"
-            style={{
-              background: `linear-gradient(90deg, transparent, ${competition.colorHex}, transparent)`,
-            }}
-          />
-        )}
-      </div>
     </button>
   );
 }
@@ -438,9 +364,9 @@ export default function CompetitionPage() {
   };
 
   return (
-    <main
+    <section
       id="competition"
-      className="min-h-screen relative overflow-hidden"
+      className="min-h-screen relative overflow-x-hidden"
       style={{ backgroundColor: "var(--surface)" }}
     >
       {/* Background glows */}
@@ -471,7 +397,7 @@ export default function CompetitionPage() {
 
       {/* Floating accents */}
       <div
-        className="absolute top-36 right-8 md:right-20 opacity-50 animate-float"
+        className="absolute top-36 right-8 md:right-20 opacity-50 animate-float pointer-events-none"
         style={{ color: "var(--brand-sky-blue)" }}
         aria-hidden="true"
       >
@@ -480,7 +406,7 @@ export default function CompetitionPage() {
         </svg>
       </div>
       <div
-        className="absolute top-56 left-8 md:left-20 opacity-35 animate-float"
+        className="absolute top-56 left-8 md:left-20 opacity-35 animate-float pointer-events-none"
         style={{ color: "var(--brand-magenta)", animationDelay: "1.2s" }}
         aria-hidden="true"
       >
@@ -489,7 +415,7 @@ export default function CompetitionPage() {
         </svg>
       </div>
       <div
-        className="absolute top-1/2 right-4 md:right-8 opacity-25 animate-float"
+        className="absolute top-1/2 right-4 md:right-8 opacity-25 animate-float pointer-events-none"
         style={{ color: "var(--brand-purple)", animationDelay: "2.5s" }}
         aria-hidden="true"
       >
@@ -557,21 +483,6 @@ export default function CompetitionPage() {
           }}
         />
 
-        {/* Cards Grid */}
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 animate-fade-in-up"
-          style={{ animationDelay: "0.2s" }}
-        >
-          {competitions.map((comp) => (
-            <CompetitionCard
-              key={comp.id}
-              competition={comp}
-              isActive={activeId === comp.id}
-              onClick={() => handleSelect(comp.id)}
-            />
-          ))}
-        </div>
-
         {/* Detail Panel */}
         <div id="competition-detail" className="scroll-mt-24 mb-10">
           <CompetitionDetail key={activeId} competition={activeCompetition} />
@@ -634,6 +545,6 @@ export default function CompetitionPage() {
           </div>
         </div>
       </div>
-    </main>
+    </section>
   );
 }

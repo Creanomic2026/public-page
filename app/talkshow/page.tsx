@@ -1,169 +1,131 @@
 const speakers = [
   {
+    id: 1,
     name: "Speaker Name",
     role: "Creative Director",
-    image: "https://placehold.co/600x750?text=Speaker+01",
+    image: "https://placehold.co/600x600?text=Speaker+01",
   },
   {
+    id: 2,
     name: "Speaker Name",
     role: "Digital Creator",
-    image: "https://placehold.co/600x750?text=Speaker+02",
-  },
-  {
-    name: "Moderator Name",
-    role: "Moderator",
-    image: "https://placehold.co/600x750?text=Moderator",
+    image: "https://placehold.co/600x600?text=Speaker+02",
   },
 ];
 
 export default function TalkshowPage() {
   return (
-    <main className="min-h-screen bg-[#111B5E] text-white">
+    <section className="min-h-screen" style={{ backgroundColor: "var(--surface)" }}>
 
       {/* HERO */}
-      <section className="relative overflow-hidden px-6 pb-24 pt-16 md:px-12 md:pb-32 md:pt-24">
-
-        {/* BACKGROUND GLOW */}
-        <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-[#D6087D] opacity-20 blur-[120px]" />
-
-        <div className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-[#2F83DD] opacity-20 blur-[120px]" />
+      <section className="relative overflow-hidden px-6 pb-24 pt-28 md:px-12 md:pb-32 md:pt-36">
+        <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full opacity-20 blur-[120px]" style={{ backgroundColor: "var(--brand-magenta)" }} />
+        <div className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full opacity-20 blur-[120px]" style={{ backgroundColor: "var(--brand-sky-blue)" }} />
 
         <div className="relative mx-auto max-w-7xl">
-
-          <p className="mb-6 text-sm font-medium tracking-[0.3em] text-[#2F83DD]">
-            FEATURED EVENT
+          <p className="mb-6 font-label text-sm font-medium tracking-[0.3em]" style={{ color: "var(--brand-sky-blue)" }}>
+            EVENT UNGGULAN
           </p>
-
-          <h2 className="text-6xl font-bold leading-[0.9] tracking-tight md:text-[9rem]">
+          <h2 className="font-display text-6xl font-bold leading-[0.9] tracking-tight md:text-[9rem]" style={{ color: "var(--on-surface)" }}>
             CREANOMIC
             <br />
-            <span className="font-light italic text-[#D6087D]">
-              TALKSHOW.
-            </span>
+            <span className="text-gradient font-light italic">TALKSHOW.</span>
           </h2>
-
           <div className="mt-12 flex flex-col justify-between gap-8 md:flex-row md:items-end">
-
-            <p className="max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
-              A space to connect, learn, and exchange ideas with inspiring
-              people from the creative and digital industry.
+            <p className="max-w-xl font-body text-base leading-relaxed md:text-lg" style={{ color: "var(--text-secondary)" }}>
+              Wadah untuk terhubung, belajar, dan bertukar ide dengan orang-orang inspiratif dari industri kreatif dan digital.
             </p>
-
             <a
               href="#details"
-              className="w-fit rounded-full bg-[#2F83DD] px-7 py-3 text-sm font-medium text-white shadow-lg shadow-[#2F83DD]/30 transition hover:bg-[#D6087D] hover:shadow-[#D6087D]/30"
+              className="w-fit rounded-full px-7 py-3 font-label text-sm font-medium text-white shadow-lg transition hover:opacity-90"
+              style={{ backgroundColor: "var(--brand-sky-blue)", boxShadow: "0 4px 20px rgba(42,130,231,0.3)" }}
             >
-              EXPLORE EVENT →
+              LIHAT EVENT →
             </a>
-
           </div>
         </div>
       </section>
 
       {/* ABOUT */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#17328F] via-[#592C98] to-[#D6087D] px-6 py-20 md:px-12 md:py-28">
-
-        {/* DECORATIVE GLOW */}
-        <div className="pointer-events-none absolute -right-40 top-20 h-[450px] w-[450px] rounded-full bg-[#2F83DD] opacity-20 blur-[120px]" />
-
-        <div className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-[#D6087D] opacity-20 blur-[120px]" />
+      <section className="relative overflow-hidden px-6 py-20 md:px-12 md:py-28" style={{ backgroundColor: "var(--card-bg-subtle)" }}>
+        <div className="pointer-events-none absolute -right-40 top-20 h-[450px] w-[450px] rounded-full opacity-20 blur-[120px]" style={{ backgroundColor: "var(--brand-sky-blue)" }} />
+        <div className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full opacity-20 blur-[120px]" style={{ backgroundColor: "var(--brand-magenta)" }} />
 
         <div className="relative mx-auto grid max-w-7xl gap-12 md:grid-cols-2">
-
           <div>
-            <p className="mb-4 text-sm font-medium tracking-[0.25em] text-[#2F83DD]">
-              ABOUT THE TALK
+            <p className="mb-4 font-label text-sm font-medium tracking-[0.25em]" style={{ color: "var(--brand-sky-blue)" }}>
+              TENTANG TALKSHOW
             </p>
-
-            <h3 className="text-4xl font-bold tracking-tight text-white md:text-6xl">
-              IDEAS THAT
+            <h3 className="font-display text-4xl font-bold tracking-tight md:text-6xl" style={{ color: "var(--on-surface)" }}>
+              IDE YANG
               <br />
-              <span className="font-light italic text-[#D6087D]">
-                INSPIRE.
-              </span>
+              <span className="text-gradient font-light italic">MENGINSPIRASI.</span>
             </h3>
           </div>
-
-          <div className="max-w-xl text-white/70">
+          <div className="max-w-xl font-body" style={{ color: "var(--text-secondary)" }}>
             <p className="leading-relaxed">
-              CREANOMIC Talkshow brings together creative minds, designers,
-              creators, and digital industry professionals to share their
-              experiences, perspectives, and stories.
+              CREANOMIC Talkshow menghadirkan para pemikir kreatif, desainer,
+              kreator, dan profesional industri digital untuk berbagi
+              pengalaman, perspektif, dan cerita mereka.
             </p>
-
             <p className="mt-6 leading-relaxed">
-              Through meaningful conversations, participants can discover new
-              ideas, explore creative opportunities, and connect with people
-              who share the same passion.
+              Melalui percakapan yang bermakna, peserta dapat menemukan ide-ide baru,
+              menjelajahi peluang kreatif, dan terhubung dengan orang-orang
+              yang memiliki semangat yang sama.
             </p>
           </div>
-
         </div>
       </section>
 
       {/* SPEAKERS */}
-      <section className="relative overflow-hidden bg-[#111B5E] px-6 py-20 md:px-12 md:py-28">
-
-        {/* BACKGROUND GLOW */}
-        <div className="pointer-events-none absolute -right-40 top-0 h-[400px] w-[400px] rounded-full bg-[#D6087D] opacity-10 blur-[120px]" />
-
-        <div className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-[#2F83DD] opacity-10 blur-[120px]" />
+      <section className="relative overflow-hidden px-6 py-20 md:px-12 md:py-28" style={{ backgroundColor: "var(--surface)" }}>
+        <div className="pointer-events-none absolute -right-40 top-0 h-[400px] w-[400px] rounded-full opacity-10 blur-[120px]" style={{ backgroundColor: "var(--brand-magenta)" }} />
+        <div className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full opacity-10 blur-[120px]" style={{ backgroundColor: "var(--brand-sky-blue)" }} />
 
         <div className="relative mx-auto max-w-7xl">
-
           <div className="mb-12">
-            <p className="mb-3 text-sm font-medium tracking-[0.25em] text-[#2F83DD]">
-              SPECIAL GUESTS
+            <p className="mb-3 font-label text-sm font-medium tracking-[0.25em]" style={{ color: "var(--brand-sky-blue)" }}>
+              TAMU SPESIAL
             </p>
-
-            <h3 className="text-4xl font-bold tracking-tight text-white md:text-6xl">
-              MEET THE
+            <h3 className="font-display text-4xl font-bold tracking-tight md:text-6xl" style={{ color: "var(--on-surface)" }}>
+              KENALI
               <br />
-              <span className="font-light italic text-[#D6087D]">
-                SPEAKERS.
-              </span>
+              <span className="text-gradient font-light italic">SPEAKERNYA.</span>
             </h3>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
-
+          <div className="grid gap-6 md:grid-cols-2">
             {speakers.map((speaker, index) => (
               <div
-                key={speaker.name}
-                className="group rounded-2xl border border-white/10 bg-[#111B5E]/50 p-4 backdrop-blur-sm transition duration-300 hover:-translate-y-2 hover:border-[#2F83DD]/60"
+                key={speaker.id}
+                className="group rounded-2xl border p-4 backdrop-blur-sm transition duration-300 hover:-translate-y-2"
+                style={{
+                  borderColor: "var(--card-border)",
+                  backgroundColor: "var(--card-bg-subtle)",
+                }}
               >
-
-                {/* SPEAKER IMAGE */}
                 <div
-                  className={`overflow-hidden rounded-xl ${
-                    index === 0
-                      ? "bg-[#17328F]"
-                      : index === 1
-                      ? "bg-[#D6087D]"
-                      : "bg-[#592C98]"
-                  }`}
+                  className="overflow-hidden rounded-xl"
+                  style={{
+                    backgroundColor: index === 0 ? "var(--brand-deep-blue)" : "var(--brand-magenta)",
+                  }}
                 >
                   <img
                     src={speaker.image}
                     alt={speaker.name}
-                    className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-105"
+                    className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                 </div>
-
-                {/* SPEAKER INFO */}
                 <div className="pt-5">
-                  <h4 className="text-xl font-semibold text-white">
+                  <h4 className="font-display text-xl font-semibold" style={{ color: "var(--on-surface)" }}>
                     {speaker.name}
                   </h4>
-
-                  <p className="mt-1 text-sm text-[#2F83DD]">
+                  <p className="mt-1 font-label text-sm" style={{ color: "var(--brand-sky-blue)" }}>
                     {speaker.role}
                   </p>
                 </div>
-
               </div>
             ))}
-
           </div>
         </div>
       </section>
@@ -171,128 +133,72 @@ export default function TalkshowPage() {
       {/* EVENT DETAILS */}
       <section
         id="details"
-        className="relative overflow-hidden bg-gradient-to-br from-[#17328F] via-[#592C98] to-[#D6087D] px-6 py-20 text-white md:px-12 md:py-28"
+        className="relative overflow-hidden px-6 py-20 md:px-12 md:py-28"
+        style={{ backgroundColor: "var(--card-bg-subtle)" }}
       >
-
-        {/* DECORATIVE GLOW */}
-        <div className="pointer-events-none absolute -right-40 top-10 h-[450px] w-[450px] rounded-full bg-[#2F83DD] opacity-20 blur-[120px]" />
-
-        <div className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-[#D6087D] opacity-20 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-40 top-10 h-[450px] w-[450px] rounded-full opacity-20 blur-[120px]" style={{ backgroundColor: "var(--brand-sky-blue)" }} />
+        <div className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full opacity-20 blur-[120px]" style={{ backgroundColor: "var(--brand-magenta)" }} />
 
         <div className="relative mx-auto max-w-7xl">
-
-          <p className="mb-4 text-sm font-medium tracking-[0.25em] text-[#2F83DD]">
-            SAVE THE DATE
+          <p className="mb-4 font-label text-sm font-medium tracking-[0.25em]" style={{ color: "var(--brand-sky-blue)" }}>
+            CATAT TANGGALNYA
           </p>
-
-          <h3 className="text-4xl font-bold tracking-tight md:text-7xl">
-            BE PART OF
+          <h3 className="font-display text-4xl font-bold tracking-tight md:text-7xl" style={{ color: "var(--on-surface)" }}>
+            BAGIAN DARI
             <br />
-            THE CONVERSATION.
+            PERCAKAPAN INI.
           </h3>
 
-          <div className="mt-14 grid gap-8 border-t border-white/20 pt-8 md:grid-cols-4">
-
+          <div className="mt-14 grid gap-8 border-t pt-8 sm:grid-cols-2 md:grid-cols-4" style={{ borderColor: "var(--card-border)" }}>
             <div>
-              <p className="text-xs tracking-[0.2em] text-white/50">
-                DATE
-              </p>
-
-              <p className="mt-3 text-lg">
-                Coming Soon
-              </p>
+              <p className="font-label text-xs tracking-[0.2em]" style={{ color: "var(--text-muted)" }}>TANGGAL</p>
+              <p className="mt-3 font-body text-lg" style={{ color: "var(--on-surface)" }}>Segera Hadir</p>
             </div>
-
             <div>
-              <p className="text-xs tracking-[0.2em] text-white/50">
-                TIME
-              </p>
-
-              <p className="mt-3 text-lg">
-                Coming Soon
-              </p>
+              <p className="font-label text-xs tracking-[0.2em]" style={{ color: "var(--text-muted)" }}>WAKTU</p>
+              <p className="mt-3 font-body text-lg" style={{ color: "var(--on-surface)" }}>Segera Hadir</p>
             </div>
-
             <div>
-              <p className="text-xs tracking-[0.2em] text-white/50">
-                LOCATION
-              </p>
-
-              <p className="mt-3 text-lg">
-                Coming Soon
-              </p>
+              <p className="font-label text-xs tracking-[0.2em]" style={{ color: "var(--text-muted)" }}>LOKASI</p>
+              <p className="mt-3 font-body text-lg" style={{ color: "var(--on-surface)" }}>Segera Hadir</p>
             </div>
-
             <div>
-              <p className="text-xs tracking-[0.2em] text-white/50">
-                REGISTRATION
-              </p>
-
-              <button
-                className="mt-3 rounded-full bg-[#2F83DD] px-6 py-2 text-sm font-medium text-white shadow-lg shadow-[#2F83DD]/30 transition hover:bg-[#D6087D] hover:shadow-[#D6087D]/30"
+              <p className="font-label text-xs tracking-[0.2em]" style={{ color: "var(--text-muted)" }}>PENDAFTARAN</p>
+              <a
+                href="/registrasi"
+                className="mt-3 inline-block rounded-full px-6 py-2 font-label text-sm font-medium text-white transition hover:opacity-90"
+                style={{ backgroundColor: "var(--brand-sky-blue)" }}
               >
-                REGISTER →
-              </button>
+                DAFTAR SEKARANG →
+              </a>
             </div>
-
           </div>
         </div>
       </section>
 
       {/* DOCUMENTATION */}
-      <section className="relative overflow-hidden bg-[#111B5E] px-6 py-20 md:px-12 md:py-28">
-
-        <div className="pointer-events-none absolute -right-40 top-0 h-[400px] w-[400px] rounded-full bg-[#D6087D] opacity-10 blur-[120px]" />
+      <section className="relative overflow-hidden px-6 py-20 md:px-12 md:py-28" style={{ backgroundColor: "var(--surface)" }}>
+        <div className="pointer-events-none absolute -right-40 top-0 h-[400px] w-[400px] rounded-full opacity-10 blur-[120px]" style={{ backgroundColor: "var(--brand-magenta)" }} />
 
         <div className="relative mx-auto max-w-7xl">
-
-          <p className="mb-4 text-sm font-medium tracking-[0.25em] text-[#2F83DD]">
-            DOCUMENTATION
+          <p className="mb-4 font-label text-sm font-medium tracking-[0.25em]" style={{ color: "var(--brand-sky-blue)" }}>
+            DOKUMENTASI
           </p>
-
-          <h3 className="text-4xl font-bold tracking-tight text-white md:text-6xl">
-            MOMENTS TO
+          <h3 className="font-display text-4xl font-bold tracking-tight md:text-6xl" style={{ color: "var(--on-surface)" }}>
+            MOMEN YANG
             <br />
-            <span className="font-light italic text-[#D6087D]">
-              REMEMBER.
-            </span>
+            <span className="text-gradient font-light italic">TAK TERLUPAKAN.</span>
           </h3>
 
-          <div className="mt-12 flex min-h-[300px] items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-[#17328F] via-[#592C98] to-[#D6087D]">
-
+          <div className="mt-12 flex min-h-[300px] items-center justify-center rounded-2xl border" style={{ borderColor: "var(--card-border)", backgroundColor: "var(--card-bg-subtle)" }}>
             <div className="text-center">
-
-              <p className="text-2xl font-semibold text-white">
-                COMING SOON
-              </p>
-
-              <p className="mt-3 text-sm text-white/60">
-                Talkshow documentation will appear here.
-              </p>
-
+              <p className="font-display text-2xl font-semibold" style={{ color: "var(--on-surface)" }}>SEGERA HADIR</p>
+              <p className="mt-3 font-body text-sm" style={{ color: "var(--text-muted)" }}>Dokumentasi talkshow akan muncul di sini.</p>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="bg-[#111B5E] px-6 py-10 md:px-12">
-
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-5 border-t border-white/10 pt-8 md:flex-row">
-
-          <p className="text-sm font-semibold text-white">
-            CREANOMIC
-            <span className="text-[#D6087D]">.</span>
-          </p>
-
-          <p className="text-sm text-white/50">
-            © 2026 CREANOMIC. All rights reserved.
-          </p>
-
-        </div>
-      </footer>
-
-    </main>
+    </section>
   );
 }

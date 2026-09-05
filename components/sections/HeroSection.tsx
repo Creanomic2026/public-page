@@ -112,21 +112,23 @@ export default function HeroSection() {
 
           {/* Stats row */}
           <div
-            className="grid grid-cols-3 border-t border-x rounded-b-[var(--radius-xl)] overflow-hidden"
-            style={{ borderColor: "var(--card-border)" }}
+            className="grid grid-cols-3 rounded-[var(--radius-xl)] overflow-hidden border"
+            style={{
+              borderColor: "var(--card-border)",
+              backgroundColor: "var(--card-bg-subtle)",
+            }}
           >
             {stats.map((stat, i) => (
               <div
                 key={stat.label}
-                className="flex flex-col items-center gap-1.5 py-5 px-4 transition-colors duration-200"
+                className="flex flex-col items-center gap-2 py-6 px-4"
                 style={{
-                  backgroundColor: "var(--card-bg-subtle)",
-                  borderLeft: i > 0 ? "1px solid var(--card-border)" : "none",
+                  borderRight: i < stats.length - 1 ? "1px solid var(--card-border)" : "none",
                 }}
               >
-                <Icon name={stat.icon} size={18} style={{ color: "var(--brand-sky-blue)" }} />
+                <Icon name={stat.icon} size={20} style={{ color: "var(--brand-sky-blue)" }} />
                 <span
-                  className="text-xl md:text-2xl font-bold text-gradient"
+                  className="text-2xl md:text-3xl font-bold text-gradient"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
                   {stat.value}

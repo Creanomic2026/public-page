@@ -1,12 +1,8 @@
-import React from "react";
-
-// Menambahkan metadata untuk SEO halaman ini
 export const metadata = {
-  title: "Our Events - CREANOMIC",
+  title: "Event - CREANOMIC",
   description: "Rangkaian acara Creanomic termasuk Market Days, Exhibition, Entertainment, Talkshow, dan Competition.",
 };
 
-// Data array untuk menyimpan daftar acara agar lebih rapi (Clean Code)
 const events = [
   {
     id: "01",
@@ -37,58 +33,74 @@ const events = [
 
 export default function EventPage() {
   return (
-    
-    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)] py-20 px-6 sm:px-12 lg:px-24">
+    <section className="min-h-screen" style={{ backgroundColor: "var(--surface)" }}>
 
-      {/* --- EFEK VISUAL: Dekorasi Glow Latar Belakang --- */}
-      <div className="absolute left-1/4 top-1/4 h-96 w-96 animate-pulse rounded-full bg-[#522A92] opacity-20 mix-blend-screen blur-[120px]"></div>
-      <div className="absolute bottom-1/4 right-1/4 h-[500px] w-[500px] rounded-full bg-[#0D2680] opacity-30 mix-blend-screen blur-[150px]"></div>
+      {/* HERO */}
+      <section className="relative overflow-hidden px-6 pb-20 pt-28 md:px-12 md:pb-28 md:pt-36">
+        <div className="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full opacity-20 blur-[120px]" style={{ backgroundColor: "var(--brand-magenta)" }} />
+        <div className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full opacity-20 blur-[120px]" style={{ backgroundColor: "var(--brand-sky-blue)" }} />
 
-      <div className="max-w-6xl mx-auto">
-        
-        {/* Judul Halaman */}
-        <h1 className="mb-6 font-['Oswald'] text-5xl font-bold leading-[1.1] tracking-tight text-[#FFFFFF] md:text-[72px] text-center" >
-          Our <span className="bg-gradient-to-br from-[#0D2680] via-[#522A92] to-[#E025CE] bg-clip-text text-transparent">
-            Events 
-          </span>
-        </h1>
-
-        {/* List Acara */}
-        <div className="flex flex-col gap-20">
-          {events.map((event, index) => (
-            <div
-              key={event.id}
-              className={`flex flex-col md:flex-row gap-10 items-center ${
-                index % 2 !== 0 ? "md:flex-row-reverse" : ""
-              }`}
-            >
-              {/* Kotak Gambar (Placeholder) */}
-              <div className="w-full md:w-1/2 aspect-[4/3] bg-zinc-200 dark:bg-zinc-800 rounded-3xl flex flex-col items-center justify-center shadow-lg transition-transform hover:scale-105 duration-300">
-                <span className="text-zinc-500 font-medium text-lg">
-                  [ Gambar {event.title} ]
-                </span>
-                <span className="text-zinc-400 text-sm mt-2">
-                  (Ganti dengan tag &lt;img&gt; nanti)
-                </span>
-              </div>
-
-              {/* Teks Deskripsi */}
-              <div className="w-full md:w-1/2 flex flex-col">
-                <span className="text-sm font-semibold tracking-widest text-zinc-500 mb-2">
-                  EVENT #{event.id}
-                </span>
-                <h2 className="font-['Oswald'] text-3xl font-bold leading-[1.2] tracking-tight text-[#FFFFFF]">
-                  {event.title}
-                </h2>
-                <p className="mx-auto mb-[48px] max-w-2xl font-['Noto_Sans'] text-[18px] leading-[28px] text-[#E1E3E4]">
-                  {event.description}
-                </p>
-              </div>
-            </div>
-          ))}
+        <div className="relative mx-auto max-w-7xl">
+          <p className="mb-5 font-label text-sm font-medium tracking-[0.3em]" style={{ color: "var(--brand-sky-blue)" }}>
+            CREANOMIC 2026
+          </p>
+          <h1 className="font-display text-5xl font-bold leading-[0.95] tracking-tight md:text-8xl" style={{ color: "var(--on-surface)" }}>
+            RANGKAIAN
+            <br />
+            <span className="text-gradient font-light italic">ACARA.</span>
+          </h1>
+          <div className="mt-10 flex flex-col justify-between gap-8 md:flex-row md:items-end">
+            <p className="max-w-xl font-body text-base leading-relaxed md:text-lg" style={{ color: "var(--text-secondary)" }}>
+              Temukan berbagai kegiatan seru yang kami siapkan untuk pengalaman tak terlupakan.
+            </p>
+          </div>
         </div>
+      </section>
 
-      </div>
-    </main>
+      {/* EVENT LIST */}
+      <section className="relative overflow-hidden px-6 py-20 md:px-12 md:py-28" style={{ backgroundColor: "var(--card-bg-subtle)" }}>
+        <div className="pointer-events-none absolute -right-40 top-20 h-[450px] w-[450px] rounded-full opacity-20 blur-[120px]" style={{ backgroundColor: "var(--brand-sky-blue)" }} />
+        <div className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full opacity-20 blur-[120px]" style={{ backgroundColor: "var(--brand-magenta)" }} />
+
+        <div className="relative mx-auto max-w-7xl">
+          <div className="flex flex-col gap-16 md:gap-20">
+            {events.map((event, index) => (
+              <div
+                key={event.id}
+                className={`flex flex-col gap-8 md:flex-row md:items-center md:gap-12 ${
+                  index % 2 !== 0 ? "md:flex-row-reverse" : ""
+                }`}
+              >
+                {/* Image Placeholder */}
+                <div
+                  className="w-full overflow-hidden rounded-2xl md:w-1/2"
+                  style={{ backgroundColor: "var(--surface-container)" }}
+                >
+                  <div className="flex aspect-[4/3] flex-col items-center justify-center">
+                    <span className="font-label text-sm" style={{ color: "var(--text-muted)" }}>
+                      [ Gambar {event.title} ]
+                    </span>
+                  </div>
+                </div>
+
+                {/* Text */}
+                <div className="flex w-full flex-col md:w-1/2">
+                  <span className="mb-2 font-label text-xs font-semibold tracking-widest" style={{ color: "var(--brand-sky-blue)" }}>
+                    EVENT #{event.id}
+                  </span>
+                  <h2 className="font-display mb-4 text-3xl font-bold md:text-4xl" style={{ color: "var(--on-surface)" }}>
+                    {event.title}
+                  </h2>
+                  <p className="font-body text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                    {event.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+    </section>
   );
 }

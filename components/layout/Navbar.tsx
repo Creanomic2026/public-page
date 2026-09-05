@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { NAV_LINKS } from "@/data/navigation";
 import { SITE_NAME } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -44,7 +45,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-[72px]">
 
           {/* ── Logo ── */}
-          <a
+          <Link
             href="/"
             className="flex items-center gap-3 group shrink-0"
             aria-label={SITE_NAME}
@@ -69,7 +70,7 @@ export default function Navbar() {
                 {SITE_NAME.split(" ")[1]}
               </span>
             </span>
-          </a>
+          </Link>
 
           {/* ── Desktop Nav ── */}
           <ul className="hidden md:flex items-center gap-1">
@@ -99,7 +100,7 @@ export default function Navbar() {
 
           {/* ── Desktop Actions ── */}
           <div className="hidden md:flex items-center gap-3">
-            {/* <ThemeToggle /> temporarily disabled */}
+            <ThemeToggle />
             <a
               href="/registrasi"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-300 hover:shadow-[var(--glow-btn)] hover:opacity-90"
@@ -115,7 +116,7 @@ export default function Navbar() {
 
           {/* ── Mobile: ThemeToggle + Hamburger ── */}
           <div className="md:hidden flex items-center gap-2">
-            {/* <ThemeToggle /> temporarily disabled */}
+            <ThemeToggle />
             <button
               className="w-9 h-9 flex items-center justify-center rounded-[var(--radius)] transition-colors duration-200"
               style={{ color: "var(--on-surface-variant)" }}
