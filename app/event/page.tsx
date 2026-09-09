@@ -1,4 +1,4 @@
-export const metadata = {
+﻿export const metadata = {
   title: "Event - CREANOMIC",
   description: "Rangkaian acara Creanomic termasuk Market Days, Exhibition, Entertainment, Talkshow, dan Competition.",
 };
@@ -23,11 +23,13 @@ const events = [
     id: "04",
     title: "TALKSHOW",
     description: "Di rangkaian Creanomic juga ada Talkshow sebagai ruang diskusi interaktif bersama narasumber keren dan ahli di bidangnya yang akan membahas topik-topik menarik seputar bisnis, kreativitas, teknologi, dan dunia industri masa kini! Cocok banget buat kamu yang pengen upgrade wawasan, dapat motivasi baru, dan terinspirasi langsung dari para praktisi profesional yang udah terbukti sukses di bidangnya!",
+    href: "/talkshow",
   },
   {
     id: "05",
     title: "COMPETITION",
     description: "Kompetisi ini bukan sekadar lomba, tapi panggung besar untuk mengasah ide, membangun relasi, dan jadi inspirasi! Apapun latar belakangmu, saatnya buktikan kemampuanmu di hadapan juri dan peserta se-Indonesia!",
+    href: "/competition",
   },
 ];
 
@@ -94,6 +96,15 @@ export default function EventPage() {
                   <p className="font-body text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
                     {event.description}
                   </p>
+                  {event.href && (
+                    <a
+                      href={event.href}
+                      className="mt-6 inline-flex w-fit items-center justify-center rounded-full px-6 py-3 font-label text-sm font-semibold uppercase tracking-[0.05em] text-white transition-all duration-300 hover:scale-[1.03] hover:shadow-[var(--glow-sky)]"
+                      style={{ background: "var(--gradient-primary)" }}
+                    >
+                      {event.title === "TALKSHOW" ? "Lihat Talkshow" : "Lihat Competition"}
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
@@ -104,3 +115,6 @@ export default function EventPage() {
     </section>
   );
 }
+
+
+
