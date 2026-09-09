@@ -9,7 +9,7 @@ export default function RegistrasiPage() {
 
       <section className="relative z-10 flex w-full max-w-[1280px] flex-col items-center px-6 text-center md:px-12">
         
-        <div className="mb-[-12px] -rotate-2 font-accent text-[24px] font-semibold" style={{ color: "var(--brand-sky-blue)" }}>
+        <div className="mb-6 font-label text-sm font-medium tracking-[0.3em]" style={{ color: "var(--brand-sky-blue)" }}>
           Blooming Innovation
         </div>
 
@@ -33,13 +33,7 @@ export default function RegistrasiPage() {
             Daftar Sekarang
           </a>
 
-          <a 
-            href="/event"
-            className="group relative inline-flex items-center justify-center rounded-full border px-[32px] py-[16px] font-label text-[14px] font-bold uppercase tracking-[0.05em] backdrop-blur-[12px] transition-all duration-300 hover:text-white hover:shadow-[var(--glow-magenta)]"
-            style={{ borderColor: "var(--card-border)", color: "var(--text-secondary)", backgroundColor: "var(--card-bg-subtle)" }}
-          >
-            Lihat Event
-          </a>
+          
 
         </div>
         
