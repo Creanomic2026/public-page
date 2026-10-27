@@ -1,189 +1,137 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { NAV_LINKS } from "@/data/navigation";
-import { SITE_NAME } from "@/lib/constants";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import Icon from "@/components/ui/Icon";
-import ThemeToggle from "@/components/ui/ThemeToggle";
-import PlaceholderImage from "@/components/ui/PlaceholderImage";
 
 /**
- * Vibrant Kinetic Navbar.
- * - Sticky, transparent → glassmorphism on scroll
- * - Logo placeholder (replace with <Image> when ready)
- * - Desktop nav + ThemeToggle + CTA button
- * - Mobile: hamburger with slide-down menu
+ * Floating Pill Navbar — CREANOMIC 2026.
+ * - Always fixed / floating on top while scrolling.
+ * - Rounded capsule pill with warm yellow background (#FFE17A).
+ * - Generous horizontal padding at ends so Logo and Login never touch the curved edges.
+ * - Compact logo size with comfortable vertical breathing room.
+ * - Active state features a blue underline pill under the active item (like "Home").
  */
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const pathname = usePathname();
 
-  useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/event", label: "Event" },
+    { href: "/merch", label: "Merchandise" },
+    { href: "/competition", label: "Competition" },
+    { href: "/talkshow", label: "Talkshow" },
+    { href: "/registrasi", label: "Login" },
+  ];
+
+  const isLinkActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/" || pathname === "";
+    }
+    return pathname?.startsWith(href);
+  };
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        isScrolled
-          ? "border-b shadow-lg"
-          : "border-transparent"
-      )}
-      style={{
-        backgroundColor: isScrolled ? "var(--navbar-bg)" : "transparent",
-        borderColor: isScrolled ? "var(--navbar-border)" : "transparent",
-        backdropFilter: isScrolled ? "blur(16px)" : "none",
-        WebkitBackdropFilter: isScrolled ? "blur(16px)" : "none",
-      }}
-    >
-      <nav className="max-w-[1280px] mx-auto px-4 md:px-8 lg:px-16">
-        <div className="flex items-center justify-between h-16 md:h-[72px]">
+    <header className="fixed top-3 sm:top-5 left-0 right-0 z-50 flex justify-center px-4 sm:px-6 pointer-events-none">
+      <nav
+        className="pointer-events-auto relative w-full max-w-[1180px] bg-[#FFE17A] rounded-full shadow-[0_6px_24px_rgba(0,0,0,0.18)] border border-white/30 h-[50px] sm:h-[54px] md:h-[56px] flex items-center justify-between transition-all duration-300"
+        style={{
+          paddingLeft: "clamp(28px, 3.5vw, 48px)",
+          paddingRight: "clamp(36px, 5vw, 64px)",
+        }}
+        aria-label="Main Navigation"
+      >
+        {/* ── Logo on the Left (proporsional & lebih pas di ukuran navbar) ── */}
+        <Link
+          href="/"
+          className="flex items-center shrink-0 transition-transform duration-200 hover:scale-105"
+          aria-label="CREANOMIC Homepage"
+        >
+          <Image
+            src="/images/logo-creanomic.png"
+            alt="CREANOMIC"
+            width={1024}
+            height={205}
+            className="object-contain w-auto h-[18px] sm:h-[21px] md:h-[23px]"
+            priority
+            unoptimized
+          />
+        </Link>
 
-          {/* ── Logo ── */}
-          <Link
-            href="/"
-            className="flex items-center gap-3 group shrink-0"
-            aria-label={SITE_NAME}
-          >
-            {/* Logo placeholder — 40x40px */}
-            <div className="w-10 h-10 rounded-[var(--radius)] overflow-hidden shrink-0 transition-transform duration-300 group-hover:scale-105">
-              <PlaceholderImage label="CREANOMIC Logo" ratio="1/1" />
-            </div>
-            <span
-              className="font-bold text-base tracking-tight transition-all duration-300 group-hover:opacity-80"
-              style={{
-                fontFamily: "var(--font-display)",
-                color: "var(--on-surface)",
-                letterSpacing: "-0.01em",
-              }}
-            >
-              {SITE_NAME.split(" ")[0]}{" "}
-              <span
-                className="text-gradient"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                {SITE_NAME.split(" ")[1]}
-              </span>
-            </span>
-          </Link>
-
-          {/* ── Desktop Nav ── */}
-          <ul className="hidden md:flex items-center gap-1">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <a
+        {/* ── Desktop Nav Links (spacing lebih rapat & digeser lebih ke kiri dari ujung) ── */}
+        <ul className="hidden md:flex items-center gap-3.5 sm:gap-4 md:gap-5 lg:gap-6 mr-1 sm:mr-2 md:mr-3">
+          {navLinks.map((link) => {
+            const active = isLinkActive(link.href);
+            return (
+              <li key={link.href} className="relative flex flex-col items-center">
+                <Link
                   href={link.href}
-                  className="px-3 py-2 rounded-[var(--radius)] text-sm transition-colors duration-200"
+                  className={cn(
+                    "text-white font-bold text-[13px] sm:text-[14px] lg:text-[15px] tracking-wide transition-all duration-200 hover:opacity-90 active:scale-95 py-1 px-1",
+                    active ? "opacity-100" : "opacity-95 hover:opacity-100"
+                  )}
                   style={{
-                    fontFamily: "var(--font-label)",
-                    color: "var(--text-secondary)",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.target as HTMLElement).style.color = "var(--on-surface)";
-                    (e.target as HTMLElement).style.backgroundColor = "var(--surface-container)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.target as HTMLElement).style.color = "var(--text-secondary)";
-                    (e.target as HTMLElement).style.backgroundColor = "transparent";
+                    fontFamily: "var(--font-work-sans, 'Work Sans', sans-serif)",
+                    textShadow: "0 1px 3px rgba(0,0,0,0.12)",
                   }}
                 >
                   {link.label}
-                </a>
+                </Link>
+
+                {/* Blue Underline Indicator (for Active Link) */}
+                {active && (
+                  <span
+                    className="absolute -bottom-1 left-0 right-0 h-[3.5px] bg-[#0B24F3] rounded-full shadow-[0_1px_2px_rgba(11,36,243,0.4)] animate-fade-in"
+                  />
+                )}
               </li>
-            ))}
-          </ul>
+            );
+          })}
+        </ul>
 
-          {/* ── Desktop Actions ── */}
-          <div className="hidden md:flex items-center gap-3">
-            <ThemeToggle />
-            <a
-              href="/registrasi"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-300 hover:shadow-[var(--glow-btn)] hover:opacity-90"
-              style={{
-                fontFamily: "var(--font-label)",
-                background: "linear-gradient(135deg, #522A92, #D20A81)",
-              }}
-            >
-              Daftar Sekarang
-              <Icon name="arrow-right" size={14} />
-            </a>
-          </div>
-
-          {/* ── Mobile: ThemeToggle + Hamburger ── */}
-          <div className="md:hidden flex items-center gap-2">
-            <ThemeToggle />
-            <button
-              className="w-9 h-9 flex items-center justify-center rounded-[var(--radius)] transition-colors duration-200"
-              style={{ color: "var(--on-surface-variant)" }}
-              onClick={() => setIsMobileOpen(!isMobileOpen)}
-              aria-label="Toggle navigation"
-              aria-expanded={isMobileOpen}
-            >
-              {isMobileOpen ? <Icon name="x" size={20} /> : <Icon name="menu" size={20} />}
-            </button>
-          </div>
-        </div>
-
-        {/* ── Mobile Menu ── */}
-        <div
-          className={cn(
-            "md:hidden overflow-hidden transition-all duration-400 ease-in-out",
-            isMobileOpen ? "max-h-[600px] pb-4 opacity-100" : "max-h-0 opacity-0"
-          )}
+        {/* ── Mobile Hamburger Button ── */}
+        <button
+          className="md:hidden w-8 h-8 flex items-center justify-center rounded-full bg-white/30 text-white font-bold hover:bg-white/40 transition-colors"
+          onClick={() => setIsMobileOpen(!isMobileOpen)}
+          aria-label="Toggle navigation"
+          aria-expanded={isMobileOpen}
         >
+          <span className="text-xl leading-none text-[#0B24F3]">
+            {isMobileOpen ? "✕" : "☰"}
+          </span>
+        </button>
+
+        {/* ── Mobile Menu Dropdown (Floating style) ── */}
+        {isMobileOpen && (
           <div
-            className="rounded-[var(--radius-xl)] border mt-2 p-3 space-y-1"
-            style={{
-              backgroundColor: "var(--navbar-bg)",
-              borderColor: "var(--navbar-border)",
-              backdropFilter: "blur(16px)",
-            }}
+            className="absolute top-full left-0 right-0 mt-2 bg-[#FFE17A] border-2 border-white/40 rounded-3xl p-4 shadow-[0_10px_30px_rgba(0,0,0,0.2)] flex flex-col gap-2 md:hidden animate-fade-in"
           >
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="flex items-center gap-2 px-4 py-3 rounded-[var(--radius)] text-sm transition-all duration-200"
-                style={{
-                  fontFamily: "var(--font-label)",
-                  color: "var(--text-secondary)",
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget;
-                  el.style.color = "var(--on-surface)";
-                  el.style.backgroundColor = "var(--surface-container)";
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget;
-                  el.style.color = "var(--text-secondary)";
-                  el.style.backgroundColor = "transparent";
-                }}
-                onClick={() => setIsMobileOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
-            <div className="pt-2 border-t" style={{ borderColor: "var(--outline-variant)" }}>
-              <a
-                href="/registrasi"
-                className="flex items-center justify-center gap-2 px-4 py-3 rounded-full text-sm font-semibold text-white"
-                style={{
-                  fontFamily: "var(--font-label)",
-                  background: "linear-gradient(135deg, #522A92, #D20A81)",
-                }}
-                onClick={() => setIsMobileOpen(false)}
-              >
-                Daftar Sekarang
-                <Icon name="arrow-right" size={14} />
-              </a>
-            </div>
+            {navLinks.map((link) => {
+              const active = isLinkActive(link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "px-4 py-2.5 rounded-full text-base font-bold text-center transition-colors flex items-center justify-center gap-2",
+                    active
+                      ? "bg-[#0B24F3] text-white shadow-md"
+                      : "text-white hover:bg-black/10"
+                  )}
+                  style={{
+                    fontFamily: "var(--font-work-sans, 'Work Sans', sans-serif)",
+                  }}
+                  onClick={() => setIsMobileOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
-        </div>
+        )}
       </nav>
     </header>
   );

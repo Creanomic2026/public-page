@@ -1,159 +1,60 @@
-import Icon from "@/components/ui/Icon";
-import PlaceholderImage from "@/components/ui/PlaceholderImage";
-import { SITE_NAME, SITE_TAGLINE, EVENT_DATE, EVENT_LOCATION } from "@/lib/constants";
+import Image from "next/image";
 
 /**
- * Hero Section — "Vibrant Kinetic" first impression.
- * - Deep Blue→Purple→Magenta gradient background with neon bloom
- * - Floating Star + Bolt decorative SVGs
- * - Rum Raisin tagline + Oswald gradient title
- * - Primary gradient CTA + Secondary ghost CTA
- * - Placeholder hero banner image with event date badge
+ * Hero Section — Y2K Pop Art.
+ * - Vertical alternating stripes: Blue (#0B24F3) and Hot Pink (#F849C1)
+ * - Large CREANOMIC logo centered with soft white radial glow
+ * - sphere-deco.png large and bold, spanning edge-to-edge across the bottom boundary
  */
 export default function HeroSection() {
-  const stats = [
-    { icon: "calendar" as const, value: "3", label: "Hari Event" },
-    { icon: "trophy"   as const, value: "12+", label: "Kompetisi" },
-    { icon: "users"    as const, value: "100+", label: "Peserta" },
-  ];
-
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col overflow-hidden"
-      style={{ backgroundColor: "var(--surface)" }}
+      className="relative w-full flex flex-col items-center justify-center overflow-visible hero-stripe-bg"
+      style={{
+        minHeight: "70vh",
+        paddingTop: "100px",
+        paddingBottom: "140px",
+      }}
     >
-      {/* ── Background gradient layers ── */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(13,38,128,0.8) 0%, transparent 70%), " +
-            "radial-gradient(ellipse 60% 50% at 80% 80%, rgba(82,42,146,0.25) 0%, transparent 60%)",
-        }}
-      />
-      {/* Magenta bloom lower-left */}
-      <div
-        className="absolute bottom-0 left-0 w-[600px] h-[400px] opacity-20 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse, rgba(210,10,129,0.6) 0%, transparent 70%)",
-          transform: "translate(-30%, 20%)",
-        }}
-      />
+      {/* ── Centered Logo + White Glow ── */}
+      <div className="relative z-10 flex flex-col items-center justify-center text-center w-full max-w-4xl mx-auto px-4 my-auto">
+        {/* White soft radial glow ellipse behind the logo */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 85% 85% at 50% 50%, rgba(255,255,255,0.60) 0%, rgba(255,255,255,0.22) 40%, transparent 70%)",
+            filter: "blur(6px)",
+          }}
+        />
 
-      {/* ── Floating decorative icons ── */}
-      <div
-        className="absolute top-24 right-8 md:right-16 opacity-70"
-        style={{ color: "var(--brand-sky-blue)" }}
-      >
-        <Icon name="star" size={28} />
-      </div>
-      <div
-        className="absolute top-40 left-8 md:left-24 opacity-50"
-        style={{ color: "var(--brand-magenta)" }}
-      >
-        <Icon name="sparkle" size={18} />
-      </div>
-      {/* Bottom-right bolt */}
-      <div
-        className="absolute bottom-48 right-12 md:right-32 opacity-50"
-        style={{ color: "var(--brand-purple)" }}
-      >
-        <Icon name="bolt" size={22} />
-      </div>
-
-      {/* ── Main Content ── */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 md:px-8 pt-28 pb-12">
-
-        {/* Main title — Oswald display-xl */}
-        <h1
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-none tracking-tight mb-2 text-gradient"
-          style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em" }}
-        >
-          {SITE_NAME.split(" ")[0]}
-        </h1>
-        <p
-          className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-4"
-          style={{ fontFamily: "var(--font-display)", color: "var(--on-surface)", letterSpacing: "-0.01em" }}
-        >
-          {SITE_NAME.split(" ")[1]}
-        </p>
-
-        {/* Tagline — Noto Sans */}
-        <p
-          className="text-base md:text-lg mb-16 max-w-lg"
-          style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
-        >
-          {SITE_TAGLINE}
-        </p>
-
-        {/* ── Hero Image Placeholder + Stats ── */}
-        <div className="w-full max-w-4xl">
-          {/* Banner image */}
-          <div className="relative rounded-[var(--radius-xl)] overflow-hidden mb-0">
-            <PlaceholderImage label="Hero Event Photo — Crowd / Stage" ratio="16/9" />
-            {/* Date badge overlay */}
-            <div
-              className="absolute bottom-4 left-4 px-3 py-2 rounded-[var(--radius-lg)] border"
-              style={{
-                backgroundColor: "rgba(13,38,128,0.85)",
-                borderColor: "rgba(82,42,146,0.5)",
-                backdropFilter: "blur(8px)",
-              }}
-            >
-              <p className="text-[10px] uppercase tracking-[0.1em] mb-0.5" style={{ fontFamily: "var(--font-label)", color: "var(--brand-sky-blue)" }}>
-                {EVENT_LOCATION}
-              </p>
-              <p className="text-sm font-semibold" style={{ fontFamily: "var(--font-display)", color: "var(--on-surface)" }}>
-                {EVENT_DATE}
-              </p>
-            </div>
-          </div>
-
-          {/* Stats row */}
-          <div
-            className="grid grid-cols-3 rounded-[var(--radius-xl)] overflow-hidden border"
-            style={{
-              borderColor: "var(--card-border)",
-              backgroundColor: "var(--card-bg-subtle)",
-            }}
-          >
-            {stats.map((stat, i) => (
-              <div
-                key={stat.label}
-                className="flex flex-col items-center gap-2 py-6 px-4"
-                style={{
-                  borderRight: i < stats.length - 1 ? "1px solid var(--card-border)" : "none",
-                }}
-              >
-                <Icon name={stat.icon} size={20} style={{ color: "var(--brand-sky-blue)" }} />
-                <span
-                  className="text-2xl md:text-3xl font-bold text-gradient"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  {stat.value}
-                </span>
-                <span
-                  className="text-[11px] uppercase tracking-[0.08em]"
-                  style={{ fontFamily: "var(--font-label)", color: "var(--text-muted)" }}
-                >
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </div>
+        {/* Logo — fully centered & prominent */}
+        <div className="relative w-full max-w-[88vw] sm:max-w-[640px] md:max-w-[780px] lg:max-w-[880px]" style={{ zIndex: 1 }}>
+          <Image
+            src="/images/logo-creanomic.png"
+            alt="CREANOMIC student-fair 2026"
+            width={1024}
+            height={205}
+            className="w-full h-auto object-contain drop-shadow-[0_4px_16px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:scale-105"
+            priority
+            unoptimized
+          />
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* ── Sphere & Star Deco on the boundary line (large, edge-to-edge) ── */}
       <div
-        className="relative z-10 flex flex-col items-center gap-2 pb-8"
-        style={{ color: "var(--text-muted)" }}
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[45.5%] z-20 pointer-events-none select-none w-[118vw] max-w-none flex justify-center overflow-visible"
       >
-        <span className="text-[10px] uppercase tracking-[0.15em]" style={{ fontFamily: "var(--font-label)" }}>Scroll</span>
-        <div
-          className="w-px h-10 animate-pulse"
-          style={{ background: "linear-gradient(to bottom, var(--brand-sky-blue), transparent)" }}
+        <Image
+          src="/images/hero/sphere-deco.png"
+          alt="CREANOMIC Y2K Decorative Spheres & Stars"
+          width={2013}
+          height={405}
+          className="w-full h-auto min-h-[190px] sm:min-h-[240px] md:min-h-[290px] lg:min-h-[340px] object-contain drop-shadow-[0_6px_20px_rgba(0,0,0,0.2)]"
+          priority
+          unoptimized
         />
       </div>
     </section>

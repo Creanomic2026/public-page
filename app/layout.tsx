@@ -1,16 +1,27 @@
 import type { Metadata } from "next";
-import { Dancing_Script, Montserrat, Noto_Sans, Oswald, Rum_Raisin } from "next/font/google";
+import { Slackey, Work_Sans, Noto_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { ThemeProvider, THEME_INIT_SCRIPT } from "@/lib/theme";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, SITE_TAGLINE } from "@/lib/constants";
 
-const notoSans = Noto_Sans({ variable: "--font-noto-sans", subsets: ["latin"] });
-const oswald = Oswald({ variable: "--font-oswald", subsets: ["latin"] });
-const montserrat = Montserrat({ variable: "--font-montserrat", subsets: ["latin"] });
-const rumRaisin = Rum_Raisin({ variable: "--font-rum-raisin", weight: "400", subsets: ["latin"] });
-const dancingScript = Dancing_Script({ variable: "--font-dancing-script", subsets: ["latin"] });
+const slackey = Slackey({
+  variable: "--font-slackey",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const workSans = Work_Sans({
+  variable: "--font-work-sans",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+});
+
+const notoSans = Noto_Sans({
+  variable: "--font-noto-sans",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 export const metadata: Metadata = {
   title: {
@@ -46,21 +57,15 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="id" suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
       <body
-        className={`${notoSans.variable} ${oswald.variable} ${montserrat.variable} ${rumRaisin.variable} ${dancingScript.variable} antialiased transition-colors duration-300`}
+        className={`${slackey.variable} ${workSans.variable} ${notoSans.variable} antialiased`}
+        suppressHydrationWarning
       >
-        <ThemeProvider>
-          <Navbar />
-          <main id="main-content">
-            {children}
-          </main>
-          <Footer />
-        </ThemeProvider>
+        <Navbar />
+        <main id="main-content" className="w-full overflow-x-hidden">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
