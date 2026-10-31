@@ -62,22 +62,6 @@ export default function PageHero({
           {title}
         </h1>
 
-        {/* Badge student-fair / 2026 */}
-        <div className="mt-4 flex items-center justify-center gap-2 sm:gap-3">
-          <span
-            className="rounded-md border-2 border-white bg-[#F849C1] px-3 py-1 text-xs font-bold lowercase text-white shadow-[3px_3px_0px_#0B0F19] sm:text-sm"
-            style={{ fontFamily: "var(--font-work-sans)" }}
-          >
-            student-fair
-          </span>
-          <span
-            className="rounded-md border-2 border-white bg-[#F849C1] px-3 py-1 text-xs font-bold text-white shadow-[3px_3px_0px_#0B0F19] sm:text-sm"
-            style={{ fontFamily: "var(--font-work-sans)" }}
-          >
-            2026
-          </span>
-        </div>
-
         {subtitle && (
           <p
             className="mt-6 max-w-2xl text-sm font-semibold leading-relaxed text-white sm:text-base md:text-lg"
