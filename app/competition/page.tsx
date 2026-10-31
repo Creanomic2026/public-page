@@ -6,7 +6,8 @@ import {
   FaPenNib,
   FaChartLine,
   FaProjectDiagram,
-  FaPalette,
+  FaMicrochip,
+  FaBookOpen,
   FaFileAlt,
   FaIdCard,
   FaMobileAlt,
@@ -38,6 +39,7 @@ interface Competition {
   colorHex: string;
   description: string;
   rounds: CompetitionRequirement[];
+  individual?: boolean;
 }
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
@@ -45,18 +47,18 @@ interface Competition {
 const competitions: Competition[] = [
   {
     id: "01",
-    slug: "kti",
+    slug: "karya-tulis-ilmiah",
     name: "Karya Tulis Ilmiah",
     Icon: FaPenNib,
-    techMeeting: "5 Oktober 2026",
-    colorHex: "#0B24F3",
+    techMeeting: "17 Oktober 2026",
+    colorHex: "#2A82E7",
     description:
       "Unjuk kemampuan riset dan penulisan ilmiah berkualitas tinggi. Kompetisi ini mengundang mahasiswa untuk menyajikan inovasi dan temuan akademis yang berdampak nyata bagi masyarakat.",
     rounds: [
       {
         babak: "Babak Penyisihan",
         detail:
-          "Peserta mengunggah dokumen full paper atau karya tulis dalam format PDF sesuai dengan pedoman penulisan yang telah ditentukan.",
+          "Peserta mengunggah judul, karya tulis ilmiah (full paper) dalam format PDF, serta surat pernyataan orisinalitas sesuai pedoman penulisan yang telah ditentukan.",
       },
       {
         babak: "Babak Final",
@@ -70,15 +72,15 @@ const competitions: Competition[] = [
     slug: "financial-planner",
     name: "Financial Planner",
     Icon: FaChartLine,
-    techMeeting: "4 Oktober 2026",
-    colorHex: "#F849C1",
+    techMeeting: "17 Oktober 2026",
+    colorHex: "#D20A81",
     description:
       "Uji kemampuan analisis dan perencanaan keuangan dalam menghadapi tantangan ekonomi modern. Kompetisi ini dirancang untuk melatih pemikiran strategis peserta dalam pengelolaan keuangan.",
     rounds: [
       {
         babak: "Babak Penyisihan",
         detail:
-          "Peserta mengunggah berkas esai analisis keuangan dalam format PDF sesuai dengan panduan yang telah ditetapkan.",
+          "Peserta mengunggah judul karya, file karya Financial Planner dalam format PDF, serta surat pernyataan orisinalitas sesuai panduan yang telah ditetapkan.",
       },
       {
         babak: "Babak Final",
@@ -89,10 +91,10 @@ const competitions: Competition[] = [
   },
   {
     id: "03",
-    slug: "bmc",
+    slug: "business-model-canvas",
     name: "Business Model Canvas",
     Icon: FaProjectDiagram,
-    techMeeting: "4 Oktober 2026",
+    techMeeting: "16 Oktober 2026",
     colorHex: "#522A92",
     description:
       "Rancang model bisnis inovatif yang berkelanjutan menggunakan kerangka Business Model Canvas. Tunjukkan kemampuanmu dalam membangun strategi bisnis yang komprehensif dan visioner.",
@@ -100,7 +102,7 @@ const competitions: Competition[] = [
       {
         babak: "Babak Penyisihan",
         detail:
-          "Peserta mengunggah proposal bisnis yang disatukan dengan rancangan Business Model Canvas (BMC) dalam satu berkas berformat PDF.",
+          "Peserta mengunggah judul karya, proposal bisnis (PDF), rancangan Business Model Canvas (PDF/PNG/JPG), serta surat pernyataan orisinalitas.",
       },
       {
         babak: "Babak Final",
@@ -111,25 +113,48 @@ const competitions: Competition[] = [
   },
   {
     id: "04",
-    slug: "uiux",
-    name: "UI/UX Design",
-    Icon: FaPalette,
-    techMeeting: "5 Oktober 2026",
-    colorHex: "#0B1BA4",
+    slug: "internet-of-things",
+    name: "Internet of Things (IoT)",
+    Icon: FaMicrochip,
+    techMeeting: "16 Oktober 2026",
+    colorHex: "#E025CE",
     description:
-      "Wujudkan desain antarmuka yang intuitif dan estetis menggunakan prinsip-prinsip UX terkini. Kompetisi ini menantang kreativitas dan kepekaan desainmu dalam menciptakan produk digital yang berdampak.",
+      "Inovasi teknologi berbasis perangkat yang saling terhubung. Rancang solusi IoT yang fungsional dan berdampak, lengkap dengan dokumentasi proses pembuatan serta demo alat.",
     rounds: [
       {
         babak: "Babak Penyisihan",
         detail:
-          "Peserta mengunggah proposal dalam format PDF. Tautan (link) prototipe serta file rancangan komponen UI/UX harus disertakan pada bagian lampiran proposal.",
+          "Peserta mengunggah judul karya, surat pernyataan orisinalitas, bukti tahap pembuatan alat (PDF/PNG/JPG), serta tautan video demo alat melalui Instagram dengan akun yang tidak dikunci (private).",
       },
       {
         babak: "Babak Final",
         detail:
-          "Peserta terpilih wajib mempresentasikan konsep dan prototipe karyanya menggunakan media presentasi (PPT) dilanjutkan dengan sesi tanya jawab bersama dewan juri.",
+          "Peserta terpilih wajib mendemonstrasikan alat IoT secara langsung dan mempresentasikannya, dilanjutkan dengan sesi tanya jawab bersama dewan juri.",
       },
     ],
+  },
+  {
+    id: "05",
+    slug: "comic-strip",
+    name: "Comic Strip",
+    Icon: FaBookOpen,
+    techMeeting: "17 Oktober 2026",
+    colorHex: "#FF8C00",
+    description:
+      "Wujudkan cerita dalam format komik strip yang kreatif dan komunikatif. Kompetisi ini menantang kemampuan bercerita, ilustrasi, dan penyusunan panel — diikuti secara individu.",
+    rounds: [
+      {
+        babak: "Babak Penyisihan",
+        detail:
+          "Peserta mengunggah judul karya, surat pernyataan orisinalitas, bukti tahap pembuatan (sketsa, line art, pewarnaan), serta file karya komik strip (JPG/PNG/PDF).",
+      },
+      {
+        babak: "Babak Final",
+        detail:
+          "Peserta terpilih wajib mempresentasikan konsep dan karya komik stripnya, dilanjutkan dengan sesi tanya jawab bersama dewan juri.",
+      },
+    ],
+    individual: true,
   },
 ];
 
@@ -168,7 +193,7 @@ function CompetitionCard({
       onClick={onClick}
       aria-pressed={isActive}
       id={`card-${competition.slug}`}
-      className={`pop-card group flex h-full cursor-pointer flex-col items-center px-5 pb-6 pt-7 text-center transition-all duration-200 hover:-translate-y-1 focus:outline-none ${
+      className={`pop-card group flex h-full w-full cursor-pointer flex-col items-center px-5 pb-6 pt-7 text-center transition-all duration-200 hover:-translate-y-1 focus:outline-none ${
         isActive ? "ring-4 ring-[#0B24F3] ring-offset-4 ring-offset-white" : ""
       }`}
     >
@@ -273,7 +298,12 @@ function CompetitionDetail({ competition }: { competition: Competition }) {
         <div>
           <span className="tag-y2k">Syarat Pendaftaran</span>
           <ul className="mb-6 mt-5 flex flex-col gap-4">
-            {generalRequirements.map((req, idx) => (
+            {(competition.individual
+              ? generalRequirements.filter(
+                  (req) => !req.text.toLowerCase().includes("tim")
+                )
+              : generalRequirements
+            ).map((req, idx) => (
               <li key={idx} className="flex items-start gap-3">
                 <req.Icon className="mt-0.5 shrink-0 text-lg text-[#FFD43D]" />
                 <span
@@ -290,8 +320,9 @@ function CompetitionDetail({ competition }: { competition: Competition }) {
             className="mb-6 text-xs italic text-white/80"
             style={{ fontFamily: "var(--font-work-sans)" }}
           >
-            * Semua berkas dikumpulkan melalui Google Form yang disediakan oleh
-            divisi kompetisi.
+            {competition.individual
+              ? "* Comic Strip bersifat individu (tanpa tim). Semua berkas dikumpulkan sesuai arahan divisi kompetisi."
+              : "* Semua berkas dikumpulkan melalui Google Form yang disediakan oleh divisi kompetisi."}
           </p>
 
           <a href="/registrasi" className="btn-primary-y2k">
@@ -335,14 +366,18 @@ export default function CompetitionPage() {
         </p>
 
         {/* Competition cards */}
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+        <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
           {competitions.map((comp) => (
-            <CompetitionCard
+            <div
               key={comp.id}
-              competition={comp}
-              isActive={activeId === comp.id}
-              onClick={() => handleSelect(comp.id)}
-            />
+              className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.34rem)]"
+            >
+              <CompetitionCard
+                competition={comp}
+                isActive={activeId === comp.id}
+                onClick={() => handleSelect(comp.id)}
+              />
+            </div>
           ))}
         </div>
 
