@@ -40,19 +40,28 @@
   --radius-full:    9999px;
   --radius-wobbly:  255px 15px 225px 15px / 15px 225px 15px 255px;
 
-  /* Typography */
-  --font-display: 'Slackey', cursive;
-  --font-label:   'Work Sans', sans-serif;
-  --font-body:    'Noto Sans', sans-serif;
+  /* Typography — referensi ke variabel next/font di <body> */
+  --font-display: var(--font-slackey), 'Slackey', cursive;
+  --font-label:   var(--font-work-sans), 'Work Sans', sans-serif;
+  --font-body:    var(--font-noto-sans), 'Noto Sans', sans-serif;
 }
 
-/* ─── Base Reset ─────────────────────────────────────────────────────────── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* Expose font tokens as Tailwind utilities (font-display / font-label / font-body) */
+@theme inline {
+  --font-display: var(--font-slackey), 'Slackey', cursive;
+  --font-label:   var(--font-work-sans), 'Work Sans', sans-serif;
+  --font-body:    var(--font-noto-sans), 'Noto Sans', sans-serif;
+}
+
+/* ─── Base Reset (dalam @layer base agar tidak menimpa utility Tailwind) ──── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 html {
@@ -171,6 +180,55 @@ body {
   box-shadow: 1px 1px 0px var(--brand-neutral);
 }
 
+/* ─── Secondary Button ───────────────────────────────────────────────────── */
+.btn-outline-y2k {
+  background-color: #FFFFFF;
+  color: var(--brand-neutral);
+  border: 2px solid var(--brand-neutral);
+  border-radius: var(--radius-full);
+  font-family: var(--font-label);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 9px 22px;
+  box-shadow: 3px 3px 0px var(--brand-neutral);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-outline-y2k:hover {
+  background-color: var(--brand-tertiary);
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px var(--brand-neutral);
+}
+
+/* ─── Small Yellow Tag / Pill ────────────────────────────────────────────── */
+.tag-y2k {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--brand-tertiary);
+  color: var(--brand-neutral);
+  border: 2px solid var(--brand-neutral);
+  border-radius: var(--radius-full);
+  padding: 3px 12px;
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 0px var(--brand-neutral);
+}
+
+/* ─── White Pop Card (readable long-form content) ────────────────────────── */
+.pop-card-white {
+  background-color: #FFFFFF;
+  border: 3px solid var(--brand-neutral);
+  border-radius: var(--radius-xl);
+  box-shadow: 8px 8px 0px var(--brand-neutral);
+}
+
 /* ─── Animations ─────────────────────────────────────────────────────────── */
 @keyframes floatY {
   0%, 100% { transform: translateY(0px); }
@@ -184,6 +242,20 @@ body {
 
 .animate-float-y { animation: floatY 4s ease-in-out infinite; }
 .animate-sway    { animation: sway 3s ease-in-out infinite; }
+.animate-float   { animation: floatY 4s ease-in-out infinite; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in    { animation: fadeIn 0.35s ease both; }
+.animate-fade-in-up { animation: fadeInUp 0.5s ease both; }
 
 /* ─── Reduced Motion ─────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
