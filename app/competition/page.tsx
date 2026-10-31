@@ -2,7 +2,26 @@
 
 import { useState } from "react";
 import { IconType } from "react-icons";
-import { FaPenNib, FaChartLine, FaProjectDiagram, FaPalette, FaFileAlt, FaIdCard, FaMobileAlt, FaUserAlt, FaEnvelope, FaUsers, FaBullhorn, FaInfoCircle, FaCalendarAlt } from "react-icons/fa";
+import {
+  FaPenNib,
+  FaChartLine,
+  FaProjectDiagram,
+  FaMicrochip,
+  FaBookOpen,
+  FaFileAlt,
+  FaIdCard,
+  FaMobileAlt,
+  FaUserAlt,
+  FaEnvelope,
+  FaUsers,
+  FaBullhorn,
+  FaCalendarAlt,
+  FaInfoCircle,
+} from "react-icons/fa";
+import PageHero from "@/components/ui/PageHero";
+import PageSection from "@/components/ui/PageSection";
+import RibbonTitle from "@/components/ui/RibbonTitle";
+import PitBanner from "@/components/ui/PitBanner";
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
 
@@ -15,13 +34,12 @@ interface Competition {
   id: string;
   slug: string;
   name: string;
-  shortName: string;
   Icon: IconType;
   techMeeting: string;
   colorHex: string;
   description: string;
   rounds: CompetitionRequirement[];
-  tags: string[];
+  individual?: boolean;
 }
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
@@ -29,11 +47,10 @@ interface Competition {
 const competitions: Competition[] = [
   {
     id: "01",
-    slug: "kti",
+    slug: "karya-tulis-ilmiah",
     name: "Karya Tulis Ilmiah",
-    shortName: "KTI",
     Icon: FaPenNib,
-    techMeeting: "5 Oktober 2026",
+    techMeeting: "17 Oktober 2026",
     colorHex: "#2A82E7",
     description:
       "Unjuk kemampuan riset dan penulisan ilmiah berkualitas tinggi. Kompetisi ini mengundang mahasiswa untuk menyajikan inovasi dan temuan akademis yang berdampak nyata bagi masyarakat.",
@@ -41,7 +58,7 @@ const competitions: Competition[] = [
       {
         babak: "Babak Penyisihan",
         detail:
-          "Peserta mengunggah dokumen full paper atau karya tulis dalam format PDF sesuai dengan pedoman penulisan yang telah ditentukan.",
+          "Peserta mengunggah judul, karya tulis ilmiah (full paper) dalam format PDF, serta surat pernyataan orisinalitas sesuai pedoman penulisan yang telah ditentukan.",
       },
       {
         babak: "Babak Final",
@@ -49,15 +66,13 @@ const competitions: Competition[] = [
           "Peserta terpilih wajib mempresentasikan karyanya menggunakan media presentasi (PPT) dilanjutkan dengan sesi tanya jawab bersama dewan juri.",
       },
     ],
-    tags: ["Riset", "Akademik", "Inovasi"],
   },
   {
     id: "02",
     slug: "financial-planner",
     name: "Financial Planner",
-    shortName: "Financial Planner",
     Icon: FaChartLine,
-    techMeeting: "4 Oktober 2026",
+    techMeeting: "17 Oktober 2026",
     colorHex: "#D20A81",
     description:
       "Uji kemampuan analisis dan perencanaan keuangan dalam menghadapi tantangan ekonomi modern. Kompetisi ini dirancang untuk melatih pemikiran strategis peserta dalam pengelolaan keuangan.",
@@ -65,7 +80,7 @@ const competitions: Competition[] = [
       {
         babak: "Babak Penyisihan",
         detail:
-          "Peserta mengunggah berkas esai analisis keuangan dalam format PDF sesuai dengan panduan yang telah ditetapkan.",
+          "Peserta mengunggah judul karya, file karya Financial Planner dalam format PDF, serta surat pernyataan orisinalitas sesuai panduan yang telah ditetapkan.",
       },
       {
         babak: "Babak Final",
@@ -73,15 +88,13 @@ const competitions: Competition[] = [
           "Peserta terpilih wajib mempresentasikan hasil analisis keuangannya menggunakan media presentasi (PPT) dilanjutkan dengan sesi tanya jawab bersama dewan juri.",
       },
     ],
-    tags: ["Keuangan", "Analisis", "Strategi"],
   },
   {
     id: "03",
-    slug: "bmc",
+    slug: "business-model-canvas",
     name: "Business Model Canvas",
-    shortName: "BMC",
     Icon: FaProjectDiagram,
-    techMeeting: "4 Oktober 2026",
+    techMeeting: "16 Oktober 2026",
     colorHex: "#522A92",
     description:
       "Rancang model bisnis inovatif yang berkelanjutan menggunakan kerangka Business Model Canvas. Tunjukkan kemampuanmu dalam membangun strategi bisnis yang komprehensif dan visioner.",
@@ -89,7 +102,7 @@ const competitions: Competition[] = [
       {
         babak: "Babak Penyisihan",
         detail:
-          "Peserta mengunggah proposal bisnis yang disatukan dengan rancangan Business Model Canvas (BMC) dalam satu berkas berformat PDF.",
+          "Peserta mengunggah judul karya, proposal bisnis (PDF), rancangan Business Model Canvas (PDF/PNG/JPG), serta surat pernyataan orisinalitas.",
       },
       {
         babak: "Babak Final",
@@ -97,47 +110,76 @@ const competitions: Competition[] = [
           "Peserta terpilih wajib mempresentasikan proposal dan rancangan BMC menggunakan media presentasi (PPT) dilanjutkan dengan sesi tanya jawab bersama dewan juri.",
       },
     ],
-    tags: ["Bisnis", "Inovasi", "Strategi"],
   },
   {
     id: "04",
-    slug: "uiux",
-    name: "UI/UX Design",
-    shortName: "UI/UX Design",
-    Icon: FaPalette,
-    techMeeting: "5 Oktober 2026",
-    colorHex: "#6A38C8",
+    slug: "internet-of-things",
+    name: "Internet of Things (IoT)",
+    Icon: FaMicrochip,
+    techMeeting: "16 Oktober 2026",
+    colorHex: "#E025CE",
     description:
-      "Wujudkan desain antarmuka yang intuitif dan estetis menggunakan prinsip-prinsip UX terkini. Kompetisi ini menantang kreativitas dan kepekaan desainmu dalam menciptakan produk digital yang berdampak.",
+      "Inovasi teknologi berbasis perangkat yang saling terhubung. Rancang solusi IoT yang fungsional dan berdampak, lengkap dengan dokumentasi proses pembuatan serta demo alat.",
     rounds: [
       {
         babak: "Babak Penyisihan",
         detail:
-          "Peserta mengunggah proposal dalam format PDF. Tautan (link) prototipe serta file rancangan komponen UI/UX harus disertakan pada bagian lampiran proposal.",
+          "Peserta mengunggah judul karya, surat pernyataan orisinalitas, bukti tahap pembuatan alat (PDF/PNG/JPG), serta tautan video demo alat melalui Instagram dengan akun yang tidak dikunci (private).",
       },
       {
         babak: "Babak Final",
         detail:
-          "Peserta terpilih wajib mempresentasikan konsep dan prototipe karyanya menggunakan media presentasi (PPT) dilanjutkan dengan sesi tanya jawab bersama dewan juri.",
+          "Peserta terpilih wajib mendemonstrasikan alat IoT secara langsung dan mempresentasikannya, dilanjutkan dengan sesi tanya jawab bersama dewan juri.",
       },
     ],
-    tags: ["Desain", "Prototipe", "UX"],
+  },
+  {
+    id: "05",
+    slug: "comic-strip",
+    name: "Comic Strip",
+    Icon: FaBookOpen,
+    techMeeting: "17 Oktober 2026",
+    colorHex: "#FF8C00",
+    description:
+      "Wujudkan cerita dalam format komik strip yang kreatif dan komunikatif. Kompetisi ini menantang kemampuan bercerita, ilustrasi, dan penyusunan panel — diikuti secara individu.",
+    rounds: [
+      {
+        babak: "Babak Penyisihan",
+        detail:
+          "Peserta mengunggah judul karya, surat pernyataan orisinalitas, bukti tahap pembuatan (sketsa, line art, pewarnaan), serta file karya komik strip (JPG/PNG/PDF).",
+      },
+      {
+        babak: "Babak Final",
+        detail:
+          "Peserta terpilih wajib mempresentasikan konsep dan karya komik stripnya, dilanjutkan dengan sesi tanya jawab bersama dewan juri.",
+      },
+    ],
+    individual: true,
   },
 ];
 
 const generalRequirements = [
   { Icon: FaFileAlt, text: "Surat pernyataan pendaftaran" },
   { Icon: FaIdCard, text: "Salinan KTM atau KTP" },
-  { Icon: FaMobileAlt, text: "Bukti screenshot sudah mengikuti akun Instagram dan TikTok Creanomic" },
-  { Icon: FaUserAlt, text: "Biodata lengkap: Nama lengkap, NIM, Program Studi, Fakultas, Institusi" },
+  {
+    Icon: FaMobileAlt,
+    text: "Bukti screenshot sudah mengikuti akun Instagram dan TikTok Creanomic",
+  },
+  {
+    Icon: FaUserAlt,
+    text: "Biodata lengkap: Nama lengkap, NIM, Program Studi, Fakultas, Institusi",
+  },
   { Icon: FaEnvelope, text: "Email aktif dan nomor WhatsApp" },
   { Icon: FaUsers, text: "Nama tim, jumlah anggota, dan daftar nama anggota" },
-  { Icon: FaBullhorn, text: "Bukti screenshot telah membagikan poster Creanomic ke grup WhatsApp" },
+  {
+    Icon: FaBullhorn,
+    text: "Bukti screenshot telah membagikan poster Creanomic ke grup WhatsApp",
+  },
 ];
 
-// ─── Badge Component ───────────────────────────────────────────────────────────
+// ─── Competition Card ──────────────────────────────────────────────────────────
 
-function CompetitionBadge({
+function CompetitionCard({
   competition,
   isActive,
   onClick,
@@ -150,48 +192,38 @@ function CompetitionBadge({
     <button
       onClick={onClick}
       aria-pressed={isActive}
-      id={`badge-${competition.slug}`}
-      className="group relative flex flex-col items-center gap-3 cursor-pointer transition-all duration-300 focus:outline-none"
-      style={{ zIndex: isActive ? 10 : 1 }}
+      id={`card-${competition.slug}`}
+      className={`pop-card group flex h-full w-full cursor-pointer flex-col items-center px-5 pb-6 pt-7 text-center transition-all duration-200 hover:-translate-y-1 focus:outline-none ${
+        isActive ? "ring-4 ring-[#0B24F3] ring-offset-4 ring-offset-white" : ""
+      }`}
     >
       <div
-        className="relative w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center transition-all duration-300"
-        style={{
-          filter: isActive
-            ? `drop-shadow(0 0 20px ${competition.colorHex}90)`
-            : "drop-shadow(0 4px 8px rgba(0,0,0,0.5))",
-          transform: isActive ? "scale(1.1)" : "scale(1)",
-        }}
+        className="mb-2 flex h-12 w-12 items-center justify-center rounded-full border-[3px] border-[#FFD43D] bg-[#0B0F19] text-xl text-[#FFD43D] shadow-[2px_2px_0px_#FFD43D]"
       >
-        <svg
-          viewBox="0 0 100 100"
-          className="absolute inset-0 w-full h-full pointer-events-none"
-          aria-hidden="true"
-        >
-          <polygon
-            points="50,5 90,25 90,75 50,95 10,75 10,25"
-            fill={isActive ? competition.colorHex : "var(--surface-container)"}
-            stroke={competition.colorHex}
-            strokeWidth="2.5"
-            className="transition-all duration-300 pointer-events-none"
-          />
-        </svg>
-        <div
-          className="relative z-10 pointer-events-none text-2xl sm:text-3xl transition-transform duration-300 group-hover:scale-110"
-          style={{ color: isActive ? "#FFFFFF" : competition.colorHex }}
-        >
-          <competition.Icon />
-        </div>
+        <competition.Icon />
       </div>
-      <span
-        className="pointer-events-none text-[10px] sm:text-xs font-bold uppercase tracking-widest text-center leading-tight transition-colors duration-300"
+
+      <h3
+        className="mt-2 text-lg leading-tight text-white md:text-xl"
         style={{
-          fontFamily: "var(--font-label)",
-          color: isActive ? competition.colorHex : "var(--text-secondary)",
-          maxWidth: "96px",
+          fontFamily: "var(--font-slackey)",
+          textShadow: "2px 2px 0px #0B24F3",
         }}
       >
-        {competition.shortName}
+        {competition.name}
+      </h3>
+
+      <span className="mx-auto mt-3 block h-[5px] w-14 -skew-x-12 rounded-full bg-[#FFD43D]" />
+
+      <p
+        className="mt-4 flex-1 text-center text-sm leading-relaxed text-white"
+        style={{ fontFamily: "var(--font-work-sans)" }}
+      >
+        {competition.description}
+      </p>
+
+      <span className="tag-y2k mt-5">
+        {isActive ? "SEDANG DILIHAT" : "LIHAT DETAIL →"}
       </span>
     </button>
   );
@@ -201,146 +233,101 @@ function CompetitionBadge({
 
 function CompetitionDetail({ competition }: { competition: Competition }) {
   return (
-    <section 
-      className="relative overflow-hidden rounded-3xl border px-6 py-12 md:px-12 md:py-16 backdrop-blur-sm animate-fade-in-up"
-      style={{
-        backgroundColor: "var(--card-bg-subtle)",
-        borderColor: "var(--card-border)",
-      }}
-    >
-      {/* Glow */}
-      <div
-        className="pointer-events-none absolute -right-20 -top-20 h-[400px] w-[400px] rounded-full opacity-20 blur-[120px]"
-        style={{ backgroundColor: competition.colorHex }}
+    <section className="pop-card animate-fade-in-up relative mt-10 px-6 pb-10 pt-12 md:px-10 md:pt-14">
+      <RibbonTitle
+        title="DETAIL LOMBA"
+        className="absolute -top-1 left-1/2 z-10 -translate-x-1/2"
       />
-      <div
-        className="pointer-events-none absolute -left-20 -bottom-20 h-[300px] w-[300px] rounded-full opacity-10 blur-[100px]"
-        style={{ backgroundColor: competition.colorHex }}
-      />
-      
-      {/* Header */}
-      <div className="relative z-10 mb-12">
-        <p
-          className="mb-4 text-xs font-medium tracking-[0.25em] uppercase"
-          style={{ color: competition.colorHex }}
-        >
-          CABANG LOMBA #{competition.id}
-        </p>
-        <h3 
-          className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl mb-6"
-          style={{ fontFamily: "var(--font-display)", color: "var(--on-surface)" }}
+
+      <div className="mb-8 mt-2">
+        <span className="tag-y2k">CABANG LOMBA #{competition.id}</span>
+        <h2
+          className="mt-4 text-3xl text-white sm:text-4xl md:text-5xl"
+          style={{
+            fontFamily: "var(--font-slackey)",
+            textShadow: "3px 3px 0px #0B24F3",
+          }}
         >
           {competition.name}
-        </h3>
-        <p 
-          className="max-w-2xl text-base leading-relaxed md:text-lg"
-          style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
-        >
-          {competition.description}
-        </p>
+        </h2>
       </div>
 
-      <div 
-        className="relative z-10 grid gap-12 border-t pt-12 lg:grid-cols-2"
-        style={{ borderColor: "var(--card-border)" }}
-      >
-        
+      <div className="grid gap-10 border-t-2 border-dashed border-white/40 pt-8 lg:grid-cols-2">
         {/* Left: Mechanism & TM */}
         <div>
-           <div className="mb-10">
-             <p 
-               className="mb-4 text-xs font-medium tracking-[0.2em] uppercase"
-               style={{ fontFamily: "var(--font-label)", color: "var(--text-muted)" }}
-             >
-                TECHNICAL MEETING
-             </p>
-             <div 
-               className="flex items-center gap-3 text-lg font-medium"
-               style={{ color: "var(--on-surface)" }}
-             >
-                <FaCalendarAlt className="text-2xl" style={{ color: competition.colorHex }} />
-                <span>{competition.techMeeting}</span>
-             </div>
-           </div>
+          <div className="mb-8">
+            <span className="tag-y2k">Technical Meeting</span>
+            <div
+              className="mt-4 flex items-center gap-3 text-base font-bold text-white md:text-lg"
+              style={{ fontFamily: "var(--font-work-sans)" }}
+            >
+              <FaCalendarAlt className="text-xl text-[#FFD43D]" />
+              <span>{competition.techMeeting}</span>
+            </div>
+          </div>
 
-           <div>
-             <p 
-               className="mb-6 text-xs font-medium tracking-[0.2em] uppercase"
-               style={{ fontFamily: "var(--font-label)", color: "var(--text-muted)" }}
-             >
-                MEKANISME KOMPETISI
-             </p>
-             <div className="flex flex-col gap-6">
-                {competition.rounds.map((round, idx) => (
-                  <div key={round.babak} className="group">
-                    <p 
-                      className="text-lg font-semibold mb-2 flex items-center gap-3"
-                      style={{ color: "var(--on-surface)" }}
+          <div>
+            <span className="tag-y2k">Mekanisme Kompetisi</span>
+            <div className="mt-5 flex flex-col gap-6">
+              {competition.rounds.map((round, idx) => (
+                <div key={round.babak}>
+                  <p
+                    className="mb-2 flex items-center gap-3 text-base font-bold text-white md:text-lg"
+                    style={{ fontFamily: "var(--font-work-sans)" }}
+                  >
+                    <span
+                      className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-[#FFD43D] bg-[#0B0F19] text-xs font-bold text-[#FFD43D]"
                     >
-                       <span 
-                          className="text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center border" 
-                          style={{ 
-                            color: competition.colorHex, 
-                            borderColor: competition.colorHex,
-                            backgroundColor: `${competition.colorHex}15`
-                          }}
-                       >
-                          {idx+1}
-                       </span>
-                       {round.babak}
-                    </p>
-                    <p 
-                      className="text-sm leading-relaxed pl-10"
-                      style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
-                    >
-                       {round.detail}
-                    </p>
-                  </div>
-                ))}
-             </div>
-           </div>
+                      {idx + 1}
+                    </span>
+                    {round.babak}
+                  </p>
+                  <p
+                    className="pl-10 text-sm leading-relaxed text-white/90"
+                    style={{ fontFamily: "var(--font-work-sans)" }}
+                  >
+                    {round.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Right: Requirements */}
         <div>
-           <p 
-             className="mb-6 text-xs font-medium tracking-[0.2em] uppercase"
-             style={{ fontFamily: "var(--font-label)", color: "var(--text-muted)" }}
-           >
-              SYARAT PENDAFTARAN UMUM
-           </p>
-           <ul className="flex flex-col gap-5 mb-10">
-              {generalRequirements.map((req, idx) => (
-                <li key={idx} className="flex items-start gap-4">
-                  <req.Icon className="text-xl shrink-0 mt-0.5" style={{ color: competition.colorHex }} />
-                  <span 
-                    className="text-sm leading-relaxed"
-                    style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
-                  >
-                    {req.text}
-                  </span>
-                </li>
-              ))}
-           </ul>
-           
-           <p 
-             className="text-xs italic mb-10"
-             style={{ fontFamily: "var(--font-body)", color: "var(--text-muted)" }}
-           >
-             * Semua berkas dikumpulkan melalui Google Form yang disediakan oleh divisi kompetisi.
-           </p>
+          <span className="tag-y2k">Syarat Pendaftaran</span>
+          <ul className="mb-6 mt-5 flex flex-col gap-4">
+            {(competition.individual
+              ? generalRequirements.filter(
+                  (req) => !req.text.toLowerCase().includes("tim")
+                )
+              : generalRequirements
+            ).map((req, idx) => (
+              <li key={idx} className="flex items-start gap-3">
+                <req.Icon className="mt-0.5 shrink-0 text-lg text-[#FFD43D]" />
+                <span
+                  className="text-sm leading-relaxed text-white"
+                  style={{ fontFamily: "var(--font-work-sans)" }}
+                >
+                  {req.text}
+                </span>
+              </li>
+            ))}
+          </ul>
 
-           <a
-              href="/registrasi"
-              className="inline-flex w-fit items-center gap-3 rounded-full px-8 py-3.5 text-sm font-bold shadow-lg transition hover:scale-105"
-              style={{ 
-                backgroundColor: competition.colorHex, 
-                color: "#FFFFFF", 
-                boxShadow: `0 4px 20px ${competition.colorHex}40` 
-              }}
-            >
-              DAFTAR SEKARANG →
-            </a>
+          <p
+            className="mb-6 text-xs italic text-white/80"
+            style={{ fontFamily: "var(--font-work-sans)" }}
+          >
+            {competition.individual
+              ? "* Comic Strip bersifat individu (tanpa tim). Semua berkas dikumpulkan sesuai arahan divisi kompetisi."
+              : "* Semua berkas dikumpulkan melalui Google Form yang disediakan oleh divisi kompetisi."}
+          </p>
+
+          <a href="/registrasi" className="btn-primary-y2k">
+            DAFTAR SEKARANG →
+          </a>
         </div>
       </div>
     </section>
@@ -358,193 +345,82 @@ export default function CompetitionPage() {
     if (typeof window !== "undefined") {
       setTimeout(() => {
         const el = document.getElementById("competition-detail");
-        if (el) el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 50);
     }
   };
 
   return (
-    <section
-      id="competition"
-      className="min-h-screen relative overflow-x-hidden"
-      style={{ backgroundColor: "var(--surface)" }}
-    >
-      {/* Background glows */}
-      <div
-        className="absolute top-0 left-0 w-[600px] h-[600px] pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse, rgba(13,38,128,0.6) 0%, transparent 70%)",
-          transform: "translate(-30%, -30%)",
-          opacity: 0.25,
-        }}
-      />
-      <div
-        className="absolute bottom-1/3 right-0 w-[500px] h-[500px] pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, rgba(82,42,146,0.6) 0%, transparent 70%)",
-          transform: "translateX(30%)",
-          opacity: 0.18,
-        }}
-      />
-      <div
-        className="absolute bottom-0 left-1/2 w-[800px] h-[400px] pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse, rgba(210,10,129,0.5) 0%, transparent 70%)",
-          transform: "translateX(-50%) translateY(30%)",
-          opacity: 0.12,
-        }}
-      />
+    <>
+      <PageHero preTitle="Ready to Take" title="the CHALLENGE?" />
 
-      {/* Floating accents */}
-      <div
-        className="absolute top-36 right-8 md:right-20 opacity-50 animate-float pointer-events-none"
-        style={{ color: "var(--brand-sky-blue)" }}
-        aria-hidden="true"
-      >
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
-        </svg>
-      </div>
-      <div
-        className="absolute top-56 left-8 md:left-20 opacity-35 animate-float pointer-events-none"
-        style={{ color: "var(--brand-magenta)", animationDelay: "1.2s" }}
-        aria-hidden="true"
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-        </svg>
-      </div>
-      <div
-        className="absolute top-1/2 right-4 md:right-8 opacity-25 animate-float pointer-events-none"
-        style={{ color: "var(--brand-purple)", animationDelay: "2.5s" }}
-        aria-hidden="true"
-      >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
-        </svg>
-      </div>
-
-      {/* Page Content */}
-      <div className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-8 lg:px-16 pt-28 pb-24">
-
-        {/* Section Header */}
-        <div className="text-center mb-12 animate-fade-in-up">
-          <span
-            className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.12em] mb-5"
-            style={{
-              fontFamily: "var(--font-label)",
-              backgroundColor: "rgba(42,130,231,0.12)",
-              color: "var(--brand-sky-blue)",
-              border: "1px solid rgba(42,130,231,0.3)",
-            }}
-          >
-            CREANOMIC 2026
-          </span>
-          <h1
-            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4"
-            style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em" }}
-          >
-            <span className="text-gradient">Bidang &amp; Tangkai</span>
-            <br />
-            <span style={{ color: "var(--on-surface)" }}>Lomba</span>
-          </h1>
-          <p
-            className="text-base md:text-lg max-w-xl mx-auto"
-            style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
-          >
-            Berikut adalah cabang lomba yang dikompetisikan dalam gelaran{" "}
-            <strong style={{ color: "var(--brand-sky-blue)" }}>CREANOMIC 2026</strong>.
-            Pilih lomba dan pelajari detail serta syarat pendaftarannya.
-          </p>
-        </div>
-
-        {/* Badge List */}
-        <div
-          className="flex flex-wrap justify-center gap-8 md:gap-12 mb-16 animate-fade-in-up"
-          style={{ animationDelay: "0.1s" }}
-          role="tablist"
-          aria-label="Daftar Cabang Lomba"
+      <PageSection paddingTop={240} width="wide">
+        <p
+          className="mx-auto mb-12 max-w-3xl text-center text-sm font-semibold leading-relaxed text-[#0B0F19] md:text-base"
+          style={{ fontFamily: "var(--font-work-sans)" }}
         >
+          Berikut adalah Bidang dan Tangkai Lomba yang dikompetisikan dalam
+          gelaran{" "}
+          <strong className="text-[#0B24F3]">CREANOMIC 2026</strong>. Pilih
+          lomba untuk melihat detail serta syarat pendaftarannya.
+        </p>
+
+        {/* Competition cards */}
+        <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
           {competitions.map((comp) => (
-            <CompetitionBadge
+            <div
               key={comp.id}
-              competition={comp}
-              isActive={activeId === comp.id}
-              onClick={() => handleSelect(comp.id)}
-            />
+              className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.34rem)]"
+            >
+              <CompetitionCard
+                competition={comp}
+                isActive={activeId === comp.id}
+                onClick={() => handleSelect(comp.id)}
+              />
+            </div>
           ))}
         </div>
 
-        {/* Divider */}
-        <div
-          className="w-full h-px mb-10"
-          style={{
-            background: "linear-gradient(90deg, transparent, var(--card-border), transparent)",
-          }}
-        />
-
-        {/* Detail Panel */}
-        <div id="competition-detail" className="scroll-mt-24 mb-10">
+        {/* Detail */}
+        <div id="competition-detail" className="scroll-mt-28">
           <CompetitionDetail key={activeId} competition={activeCompetition} />
         </div>
 
-        {/* Info Banner */}
-        <div
-          className="rounded-[var(--radius-xl)] border p-6 md:p-8 animate-fade-in-up"
-          style={{
-            backgroundColor: "var(--card-bg-subtle)",
-            borderColor: "var(--card-border)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-            animationDelay: "0.3s",
-          }}
-        >
-          <div className="flex flex-col md:flex-row items-center md:items-start gap-6 text-center md:text-left">
-            <div
-              className="w-14 h-14 rounded-[var(--radius-xl)] flex items-center justify-center text-3xl flex-shrink-0"
-              style={{
-                backgroundColor: "rgba(42,130,231,0.15)",
-                border: "1px solid rgba(42,130,231,0.3)",
-                color: "#2A82E7"
-              }}
-            >
+        {/* Info */}
+        <div className="mt-12 rounded-[24px] border-[3px] border-[#0B0F19] bg-[#FFD43D] p-6 shadow-[8px_8px_0px_#0B0F19] md:p-8">
+          <div className="flex flex-col items-center gap-5 text-center md:flex-row md:text-left">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-[3px] border-[#0B0F19] bg-white text-2xl text-[#0B24F3] shadow-[3px_3px_0px_#0B0F19]">
               <FaInfoCircle />
             </div>
             <div className="flex-1">
               <h3
-                className="text-lg md:text-xl font-semibold mb-2"
-                style={{ fontFamily: "var(--font-display)", color: "var(--on-surface)" }}
+                className="text-xl text-[#0B24F3]"
+                style={{ fontFamily: "var(--font-slackey)" }}
               >
-                Informasi Penting
+                INFORMASI PENTING
               </h3>
               <p
-                className="text-sm leading-relaxed"
-                style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
+                className="mt-2 text-sm leading-relaxed text-[#0B0F19]"
+                style={{ fontFamily: "var(--font-work-sans)" }}
               >
                 Syarat pendaftaran berlaku untuk{" "}
-                <strong style={{ color: "var(--brand-sky-blue)" }}>semua cabang lomba</strong>.
-                Pastikan seluruh berkas telah disiapkan sebelum mengisi Google Form pendaftaran.
-                Untuk informasi lebih lanjut, hubungi panitia CREANOMIC 2026 melalui media sosial resmi kami.
+                <strong>semua cabang lomba</strong>. Pastikan seluruh berkas
+                telah disiapkan sebelum mengisi Google Form pendaftaran. Untuk
+                informasi lebih lanjut, hubungi panitia CREANOMIC 2026 melalui
+                media sosial resmi kami.
               </p>
             </div>
             <a
               href="/registrasi"
-              className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold whitespace-nowrap transition-all duration-300 hover:opacity-90"
-              style={{
-                fontFamily: "var(--font-label)",
-                background: "linear-gradient(135deg, #522A92, #D20A81)",
-                color: "#FFFFFF",
-                boxShadow: "0 4px 20px rgba(82,42,146,0.4)",
-              }}
+              className="btn-outline-y2k shrink-0 whitespace-nowrap"
             >
-              Daftar Sekarang
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+              DAFTAR SEKARANG →
             </a>
           </div>
         </div>
-      </div>
-    </section>
+      </PageSection>
+
+      <PitBanner />
+    </>
   );
 }

@@ -11,9 +11,11 @@ const slideBackgrounds = [
 export default function EventArtworkCarousel({
   title,
   number,
+  indicatorSide = "left",
 }: {
   title: string;
   number: string;
+  indicatorSide?: "left" | "right";
 }) {
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -25,17 +27,21 @@ export default function EventArtworkCarousel({
     <div
       role="group"
       aria-label={`Galeri gambar ${title}`}
-      className="relative mx-auto aspect-[1.2/1] w-full max-w-[420px]"
+      className="relative mx-auto aspect-[1.2/1] w-full max-w-[520px]"
     >
       <button
         type="button"
         onClick={() => goToSlide(activeSlide - 1)}
         disabled={activeSlide === 0}
         aria-label={`Gambar sebelumnya untuk ${title}`}
-        className="absolute left-[28%] top-0 h-[17%] w-[38%] bg-[#102b82] shadow-[3px_4px_0_#e833a9] transition hover:-translate-y-1 hover:shadow-[3px_6px_0_#e833a9] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e833a9] disabled:cursor-not-allowed"
+        className="absolute left-[25%] top-0 h-[9%] w-[50%] rounded-full bg-[#102b82] transition hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e833a9] disabled:cursor-not-allowed disabled:opacity-70"
       />
 
-      <div className="absolute left-[10%] top-[37%] flex h-[26%] w-[3%] flex-col justify-between py-1">
+      <div
+        className={`absolute ${
+          indicatorSide === "right" ? "right-[8%]" : "left-[8%]"
+        } top-1/2 z-10 flex -translate-y-1/2 flex-col gap-3`}
+      >
         {slideBackgrounds.map((_, index) => (
           <button
             key={index}
@@ -43,7 +49,7 @@ export default function EventArtworkCarousel({
             onClick={() => goToSlide(index)}
             aria-label={`Tampilkan gambar ${index + 1} dari 3 untuk ${title}`}
             aria-pressed={activeSlide === index}
-            className={`h-[27%] w-1 border-0 p-0 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e833a9] ${
+            className={`h-3 w-3 rounded-sm border-0 p-0 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e833a9] ${
               activeSlide === index ? "bg-[#f537ad]" : "bg-[#102b82]"
             }`}
           />
@@ -54,9 +60,21 @@ export default function EventArtworkCarousel({
         role="img"
         aria-label={`Gambar ${activeSlide + 1} dari 3 untuk ${title}`}
         aria-live="polite"
-        className="absolute left-[13%] top-[25%] flex h-[50%] w-[74%] items-center justify-center border-[5px] border-white bg-[#102b82] shadow-[5px_5px_0_#e833a9] transition-[background] duration-300"
-        style={{ background: slideBackgrounds[activeSlide] }}
+        className="absolute left-[10%] top-[12%] h-[76%] w-[80%] overflow-hidden rounded-[26px] bg-[#102b82]"
       >
+        <div
+          className="absolute inset-x-0 top-0 flex h-[300%] flex-col transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateY(-${activeSlide * (100 / slideBackgrounds.length)}%)` }}
+        >
+          {slideBackgrounds.map((background, index) => (
+            <div
+              key={index}
+              aria-hidden="true"
+              className="h-1/3 w-full shrink-0"
+              style={{ background }}
+            />
+          ))}
+        </div>
         <span className="sr-only">
           Placeholder foto {activeSlide + 1} untuk acara {title} ({number})
         </span>
@@ -67,7 +85,7 @@ export default function EventArtworkCarousel({
         onClick={() => goToSlide(activeSlide + 1)}
         disabled={activeSlide === slideBackgrounds.length - 1}
         aria-label={`Gambar berikutnya untuk ${title}`}
-        className="absolute bottom-0 left-[28%] h-[17%] w-[38%] bg-[#102b82] shadow-[3px_4px_0_#e833a9] transition hover:translate-y-1 hover:shadow-[3px_6px_0_#e833a9] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e833a9] disabled:cursor-not-allowed"
+        className="absolute bottom-0 left-[25%] h-[9%] w-[50%] rounded-full bg-[#102b82] transition hover:translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e833a9] disabled:cursor-not-allowed disabled:opacity-70"
       />
     </div>
   );

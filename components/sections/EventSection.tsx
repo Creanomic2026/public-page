@@ -1,143 +1,72 @@
-"use client";
-
-import SectionHeader from "@/components/ui/SectionHeader";
-import Badge from "@/components/ui/Badge";
-import PlaceholderImage from "@/components/ui/PlaceholderImage";
-import { EVENT_HIGHLIGHTS } from "@/data/events";
+import Image from "next/image";
+import KilasBalikCarousel from "@/components/ui/KilasBalikCarousel";
 
 /**
- * Event Highlights Section — "Flashback: CREANOMIC"
- * Responsive 4-column grid of event highlight cards.
- * Each card: placeholder image + category chip + title + description.
+ * Kilas Balik CREANOMIC 2026 Section — Y2K Pop Art.
+ * - Dot-grid white background
+ * - Custom image header: kilas-balik.png
+ * - 3-Screen Carousel (tengah paling besar, samping kiri/kanan lebih kecil)
+ * - Sharp border (tanpa rounded) sesuai desain
+ * - Otomatis berganti setiap 5 detik
+ * - Tombol geser kiri/kanan di card tengah muncul saat di-hover
+ * - Card tambahan dapat diedit di @/data/kilasBalik.ts
  */
 export default function EventSection() {
-  const hasEvents = EVENT_HIGHLIGHTS.length > 0;
-
-  // Placeholder event cards for when data is empty
-  const placeholderCards = [
-    { title: "Business Competition",      cat: "Kompetisi",  variant: "creative" as const },
-    { title: "Creative Expo",             cat: "Pameran",    variant: "innovation" as const },
-    { title: "Workshop & Seminar",        cat: "Edukasi",    variant: "innovation" as const },
-    { title: "Cultural Night",            cat: "Budaya",     variant: "creative" as const },
-  ];
-
   return (
     <section
       id="event"
-      className="relative py-24 lg:py-32 overflow-hidden"
-      style={{ backgroundColor: "var(--surface)" }}
+      className="relative dot-grid-bg overflow-hidden w-full flex flex-col items-center justify-center text-center"
+      style={{
+        paddingTop: "32px",
+        paddingBottom: "64px",
+      }}
     >
-      {/* Sky Blue bloom top-right */}
-      <div
-        className="absolute top-0 right-0 w-80 h-80 pointer-events-none opacity-10"
-        style={{
-          background: "radial-gradient(circle, var(--brand-sky-blue) 0%, transparent 70%)",
-          transform: "translate(30%, -30%)",
-        }}
-      />
-
-      <div className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-8 lg:px-16">
-        <SectionHeader
-          eyebrow="Kilas Balik"
-          title={`Flashback: CREANOMIC ${new Date().getFullYear() - 1}`}
-          subtitle="Momen-momen berkesan dari perjalanan CREANOMIC yang terus menginspirasi."
-          className="mb-14"
+      {/* ── Top Swirl Divider (Pindahan dari Mascot Section) ── */}
+      <div className="w-full flex justify-center overflow-hidden mb-12 pointer-events-none select-none rotate-180">
+        <Image
+          src="/images/icons/swirl-divider.png"
+          alt="Y2K Swirl Divider"
+          width={1920}
+          height={257}
+          className="w-full h-auto object-contain"
+          unoptimized
         />
+      </div>
 
-        {hasEvents ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {EVENT_HIGHLIGHTS.map((event) => (
-              <EventCard
-                key={event.id}
-                title={event.title}
-                description={event.description}
-                category={event.category}
-                badgeVariant={event.category === "Kompetisi" || event.category === "Budaya" ? "creative" : "innovation"}
-              />
-            ))}
-          </div>
-        ) : (
-          /* Placeholder grid */
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {placeholderCards.map((card, i) => (
-              <EventCard
-                key={i}
-                title={card.title}
-                description="Deskripsi event akan tersedia segera. Tambahkan data di data/events.ts"
-                category={card.cat}
-                badgeVariant={card.variant}
-                isPlaceholder
-              />
-            ))}
-          </div>
-        )}
+      <div className="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col items-center justify-center text-center">
+
+        {/* Section Image Header with generous ~64px gap to content */}
+        <div className="w-full flex justify-center items-center mb-14 sm:mb-16 md:mb-20 text-center">
+          <Image
+            src="/images/headers/kilas-balik.png"
+            alt="Kilas Balik CREANOMIC 2026"
+            width={1024}
+            height={111}
+            className="w-full max-w-[600px] sm:max-w-[720px] h-auto object-contain mx-auto"
+            style={{ display: "block", margin: "0 auto" }}
+            priority
+            unoptimized
+          />
+        </div>
+
+        {/* ── 3-Screen Dynamic Carousel (Sharp Borders & Auto-Play 5s) ── */}
+        <div className="w-full flex justify-center items-center mx-auto text-center">
+          <KilasBalikCarousel autoPlayInterval={5000} />
+        </div>
+
+      </div>
+
+      {/* ── Swirl Divider (Memenuhi Layar / Full-Width Edge-to-Edge) ── */}
+      <div className="w-full flex justify-center overflow-hidden mt-14 pointer-events-none select-none">
+        <Image
+          src="/images/icons/swirl-divider.png"
+          alt="Y2K Swirl Divider"
+          width={1920}
+          height={257}
+          className="w-full h-auto object-contain"
+          unoptimized
+        />
       </div>
     </section>
-  );
-}
-
-// ─── Event Card ───────────────────────────────────────────────────────────────
-function EventCard({
-  title,
-  description,
-  category,
-  badgeVariant = "innovation",
-  isPlaceholder = false,
-}: {
-  title: string;
-  description: string;
-  category?: string;
-  badgeVariant?: "innovation" | "creative";
-  isPlaceholder?: boolean;
-}) {
-  return (
-    <div
-      className="group flex flex-col overflow-hidden rounded-[var(--radius-lg)] border transition-all duration-300"
-      style={{
-        backgroundColor: "var(--card-bg-subtle)",
-        borderColor: "var(--card-border)",
-      }}
-      onMouseEnter={(e) => {
-        const el = e.currentTarget;
-        el.style.borderColor = "var(--card-border-hover)";
-        el.style.transform = "translateY(-4px)";
-        el.style.boxShadow = "var(--glow-purple)";
-      }}
-      onMouseLeave={(e) => {
-        const el = e.currentTarget;
-        el.style.borderColor = "var(--card-border)";
-        el.style.transform = "translateY(0)";
-        el.style.boxShadow = "none";
-      }}
-    >
-      {/* Image */}
-      <div className="overflow-hidden">
-        <PlaceholderImage label={`Event Photo: ${title}`} ratio="4/3" />
-      </div>
-
-      {/* Content */}
-      <div className="p-4 flex flex-col gap-2 flex-1">
-        {category && (
-          <Badge variant={badgeVariant}>{category}</Badge>
-        )}
-        <h3
-          className="text-sm font-semibold leading-snug transition-colors duration-200"
-          style={{
-            fontFamily: "var(--font-display)",
-            color: "var(--on-surface)",
-          }}
-        >
-          {title}
-        </h3>
-        {!isPlaceholder && (
-          <p
-            className="text-xs leading-relaxed line-clamp-2"
-            style={{ fontFamily: "var(--font-body)", color: "var(--text-muted)" }}
-          >
-            {description}
-          </p>
-        )}
-      </div>
-    </div>
   );
 }
