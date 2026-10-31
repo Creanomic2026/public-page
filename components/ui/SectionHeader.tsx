@@ -1,78 +1,54 @@
-import { cn } from "@/lib/utils";
-
+/**
+ * Y2K Pop Art SectionHeader — Ribbon Trapezoid style.
+ * Uses filter: drop-shadow for clean rendering with clip-path.
+ */
 interface SectionHeaderProps {
-  eyebrow?: string;
   title: string;
   subtitle?: string;
-  align?: "left" | "center" | "right";
-  titleGradient?: boolean;
   className?: string;
+  size?: "sm" | "md" | "lg";
 }
 
-/**
- * Vibrant Kinetic Section Header.
- * - Eyebrow: Montserrat label-md, Magenta accent bar
- * - Title:   Oswald, gradient Purple→Magenta (optional)
- * - Subtitle: Noto Sans body-md, muted color
- */
 export default function SectionHeader({
-  eyebrow,
   title,
   subtitle,
-  align = "center",
-  titleGradient = true,
-  className,
+  className = "",
+  size = "lg",
 }: SectionHeaderProps) {
-  const alignClass: Record<string, string> = {
-    left:   "items-start text-left",
-    center: "items-center text-center",
-    right:  "items-end text-right",
-  };
+  const textSizeClass =
+    size === "lg"
+      ? "text-2xl sm:text-3xl md:text-4xl"
+      : size === "md"
+      ? "text-xl sm:text-2xl md:text-3xl"
+      : "text-lg sm:text-xl";
 
   return (
-    <div className={cn("flex flex-col gap-4", alignClass[align], className)}>
-      {eyebrow && (
-        <div className={cn("flex items-center gap-3", align === "center" && "justify-center", align === "right" && "justify-end")}>
-          {/* Left accent line */}
-          {align !== "right" && (
-            <span
-              className="block h-px w-8 shrink-0"
-              style={{ background: "var(--brand-magenta)" }}
-            />
-          )}
-          <span
-            className="text-[11px] font-semibold uppercase tracking-[0.12em]"
-            style={{ fontFamily: "var(--font-label)", color: "var(--brand-magenta)" }}
+    <div className={`flex flex-col items-center justify-center text-center gap-3 w-full mx-auto ${className}`}>
+      {/* Yellow trapezoid ribbon with drop-shadow wrapper */}
+      <div className="ribbon-trapezoid-wrapper mx-auto">
+        <div className="ribbon-trapezoid">
+          <h2
+            className={`font-normal text-center leading-tight uppercase ${textSizeClass}`}
+            style={{
+              fontFamily: "var(--font-slackey, 'Slackey', cursive)",
+              color: "#0B24F3",
+              textShadow:
+                "2px 2px 0px #FFFFFF, 3px 3px 0px #0B0F19",
+              letterSpacing: "0.04em",
+            }}
           >
-            {eyebrow}
-          </span>
-          {/* Right accent line */}
-          {align !== "left" && (
-            <span
-              className="block h-px w-8 shrink-0"
-              style={{ background: "var(--brand-magenta)" }}
-            />
-          )}
+            {title}
+          </h2>
         </div>
-      )}
-
-      <h2
-        className={cn(
-          "text-3xl md:text-4xl lg:text-5xl font-bold leading-tight",
-          titleGradient && "text-gradient"
-        )}
-        style={{
-          fontFamily: "var(--font-display)",
-          color: titleGradient ? undefined : "var(--on-surface)",
-        }}
-      >
-        {title}
-      </h2>
+      </div>
 
       {subtitle && (
         <p
-          className="text-base md:text-lg max-w-2xl leading-relaxed"
-          style={{ fontFamily: "var(--font-body)", color: "var(--text-secondary)" }}
+          className="text-sm md:text-base text-center max-w-xl font-semibold mt-1"
+          style={{
+            fontFamily: "var(--font-work-sans, 'Work Sans', sans-serif)",
+            color: "#0B0F19",
+          }}
         >
           {subtitle}
         </p>
