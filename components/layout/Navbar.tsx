@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 /**
@@ -17,6 +18,7 @@ import { cn } from "@/lib/utils";
 export default function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const pathname = usePathname();
+  const reduceMotion = useReducedMotion();
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -36,7 +38,10 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-3 sm:top-5 left-0 right-0 z-50 flex justify-center px-4 sm:px-6 pointer-events-none">
-      <nav
+      <motion.nav
+        initial={reduceMotion ? false : { opacity: 0, y: -36, scale: 0.96 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ type: "spring", stiffness: 160, damping: 18, delay: 0.05 }}
         className="pointer-events-auto relative w-full max-w-[1180px] bg-[#FFE17A] rounded-full shadow-[0_6px_24px_rgba(0,0,0,0.18)] border border-white/30 h-[50px] sm:h-[54px] md:h-[56px] flex items-center justify-between transition-all duration-300"
         style={{
           paddingLeft: "clamp(28px, 3.5vw, 48px)",
@@ -51,11 +56,11 @@ export default function Navbar() {
           aria-label="CREANOMIC Homepage"
         >
           <Image
-            src="/images/logo-creanomic.png"
+            src="/images/logo-creanomic-blue.png"
             alt="CREANOMIC"
-            width={1024}
-            height={205}
-            className="object-contain w-auto h-[18px] sm:h-[21px] md:h-[23px]"
+            width={2948}
+            height={1677}
+            className="object-contain w-auto h-[30px] sm:h-[32px] md:h-[34px]"
             priority
             unoptimized
           />
@@ -70,7 +75,7 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   className={cn(
-                    "text-white font-bold text-[13px] sm:text-[14px] lg:text-[15px] tracking-wide transition-all duration-200 hover:opacity-90 active:scale-95 py-1 px-1",
+                    "text-[#0B24F3] font-bold text-[13px] sm:text-[14px] lg:text-[15px] tracking-wide transition-all duration-200 hover:opacity-90 active:scale-95 py-1 px-1",
                     active ? "opacity-100" : "opacity-95 hover:opacity-100"
                   )}
                   style={{
@@ -105,34 +110,47 @@ export default function Navbar() {
         </button>
 
         {/* ── Mobile Menu Dropdown (Floating style) ── */}
-        {isMobileOpen && (
-          <div
-            className="absolute top-full left-0 right-0 mt-2 bg-[#FFE17A] border-2 border-white/40 rounded-3xl p-4 shadow-[0_10px_30px_rgba(0,0,0,0.2)] flex flex-col gap-2 md:hidden animate-fade-in"
-          >
-            {navLinks.map((link) => {
-              const active = isLinkActive(link.href);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "px-4 py-2.5 rounded-full text-base font-bold text-center transition-colors flex items-center justify-center gap-2",
-                    active
-                      ? "bg-[#0B24F3] text-white shadow-md"
-                      : "text-white hover:bg-black/10"
-                  )}
-                  style={{
-                    fontFamily: "var(--font-work-sans, 'Work Sans', sans-serif)",
-                  }}
-                  onClick={() => setIsMobileOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </div>
-        )}
-      </nav>
+        <AnimatePresence>
+          {isMobileOpen && (
+            <motion.div
+              key="mobile-menu"
+              initial={reduceMotion ? false : { opacity: 0, y: -14, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 260, damping: 22 }}
+              className="absolute top-full left-0 right-0 mt-2 bg-[#FFE17A] border-2 border-white/40 rounded-3xl p-4 shadow-[0_10px_30px_rgba(0,0,0,0.2)] flex flex-col gap-2 md:hidden"
+            >
+              {navLinks.map((link, index) => {
+                const active = isLinkActive(link.href);
+                return (
+                  <motion.div
+                    key={link.href}
+                    initial={reduceMotion ? false : { opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.04 * index, duration: 0.25 }}
+                  >
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        "px-4 py-2.5 rounded-full text-base font-bold text-center transition-colors flex items-center justify-center gap-2",
+                        active
+                          ? "bg-[#0B24F3] text-white shadow-md"
+                          : "text-[#0B24F3] hover:bg-black/10"
+                      )}
+                      style={{
+                        fontFamily: "var(--font-work-sans, 'Work Sans', sans-serif)",
+                      }}
+                      onClick={() => setIsMobileOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
     </header>
   );
 }

@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Reveal from "@/components/anim/Reveal";
+import { Stagger, StaggerItem } from "@/components/anim/Stagger";
 
 /**
  * Visi & Misi Section — Y2K Pop Art.
@@ -22,7 +24,7 @@ export default function VisiMisiSection() {
       <div className="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col items-center justify-center text-center">
 
         {/* Section Image Header with generous ~64px gap to content */}
-        <div className="w-full flex justify-center items-center mb-14 sm:mb-16 md:mb-20 text-center">
+        <Reveal className="w-full flex justify-center items-center mb-14 sm:mb-16 md:mb-20 text-center" y={22}>
           <Image
             src="/images/headers/vision-mission.png"
             alt="Our VISION & MISSION"
@@ -33,13 +35,13 @@ export default function VisiMisiSection() {
             priority
             unoptimized
           />
-        </div>
+        </Reveal>
 
         {/* Two Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto w-full justify-center">
+        <Stagger className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto w-full justify-center" gap={0.12}>
 
           {/* ── VISI CARD ── */}
-          <div className="flex flex-col items-center h-full">
+          <StaggerItem className="flex flex-col items-center h-full">
             <div className="w-full h-full pop-card py-8 sm:py-10 px-8 sm:px-10 md:px-12 flex flex-col items-center justify-start min-h-[320px] sm:min-h-[340px]">
               {/* Header Badge */}
               <div
@@ -64,10 +66,10 @@ export default function VisiMisiSection() {
                 Menjadikan CREANOMIC 2026 sebagai wadah inspiratif bagi generasi muda untuk berinovasi dan berkarya dalam bidang ekonomi kreatif, edukasi, dan sosial melalui kompetisi, pameran, dan networking.
               </p>
             </div>
-          </div>
+          </StaggerItem>
 
           {/* ── MISI CARD ── */}
-          <div className="flex flex-col items-center h-full">
+          <StaggerItem className="flex flex-col items-center h-full">
             <div className="w-full h-full pop-card py-8 sm:py-10 px-8 sm:px-10 md:px-12 flex flex-col items-center justify-start min-h-[320px] sm:min-h-[340px]">
               {/* Header Badge */}
               <div
@@ -92,9 +94,9 @@ export default function VisiMisiSection() {
                 Menyediakan platform kompetisi di bidang bisnis, teknologi, dan seni; mendorong kolaborasi dan networking antara peserta, akademisi, dan industri; memfasilitasi pameran produk inovasi pemuda dan wirausaha; mengadakan sesi edukatif dan inspiratif bersama tokoh industri terkemuka; serta mempromosikan inisiatif dan potensi mahasiswa secara luas dengan standar tinggi.
               </p>
             </div>
-          </div>
+          </StaggerItem>
 
-        </div>
+        </Stagger>
 
       </div>
     </section>

@@ -1,4 +1,5 @@
 import SectionHeader from "@/components/ui/SectionHeader";
+import Reveal from "@/components/anim/Reveal";
 
 /**
  * About Section — Y2K Pop Art.
@@ -25,21 +26,23 @@ export default function AboutSection() {
         </div>
 
         {/* Pop-art Card */}
-        <div className="pop-card p-6 sm:p-8 md:p-10 w-full mx-auto text-center">
-          <p
-            className="text-sm sm:text-base md:text-lg leading-relaxed text-white font-semibold text-center mx-auto"
-            style={{
-              fontFamily: "var(--font-work-sans), 'Work Sans', sans-serif",
-              lineHeight: "1.8",
-            }}
-          >
-            CREANOMIC (Creative Economy Innovation Summit) 2026 hadir sebagai wadah bagi pemuda
-            untuk mengasah kemampuan mereka melalui berbagai kompetisi dan kegiatan interaktif.
-            CREANOMIC 2026 tidak hanya sekadar kompetisi, tetapi juga menjadi platform edukatif
-            dan networking yang menghadirkan pembicara inspiratif, stand pameran industri dan
-            UMKM, serta sesi promosi organisasi mahasiswa.
-          </p>
-        </div>
+        <Reveal className="w-full" scale={0.96} y={34}>
+          <div className="pop-card p-6 sm:p-8 md:p-10 w-full mx-auto text-center">
+            <p
+              className="text-sm sm:text-base md:text-lg leading-relaxed text-white font-semibold text-center mx-auto"
+              style={{
+                fontFamily: "var(--font-work-sans), 'Work Sans', sans-serif",
+                lineHeight: "1.8",
+              }}
+            >
+              CREANOMIC (Creative Economy Innovation Summit) 2026 hadir sebagai wadah bagi pemuda
+              untuk mengasah kemampuan mereka melalui berbagai kompetisi dan kegiatan interaktif.
+              CREANOMIC 2026 tidak hanya sekadar kompetisi, tetapi juga menjadi platform edukatif
+              dan networking yang menghadirkan pembicara inspiratif, stand pameran industri dan
+              UMKM, serta sesi promosi organisasi mahasiswa.
+            </p>
+          </div>
+        </Reveal>
 
       </div>
     </section>

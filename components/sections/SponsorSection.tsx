@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { SPONSORS, MEDIA_PARTNERS } from "@/data/sponsors";
+import Reveal from "@/components/anim/Reveal";
+import { Stagger, StaggerItem } from "@/components/anim/Stagger";
 
 /**
  * Sponsor Section — Y2K Pop Art.
@@ -26,7 +28,7 @@ export default function SponsorSection() {
       <div className="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col items-center justify-center text-center">
 
         {/* Section Image Header with generous ~64px gap to content */}
-        <div className="flex justify-center items-center mb-14 sm:mb-16 md:mb-20 w-full text-center">
+        <Reveal className="flex justify-center items-center mb-14 sm:mb-16 md:mb-20 w-full text-center" y={22}>
           <Image
             src="/images/headers/sponsor-media-partner.png"
             alt="Sponsor dan Media Partner"
@@ -37,7 +39,7 @@ export default function SponsorSection() {
             priority
             unoptimized
           />
-        </div>
+        </Reveal>
 
         {/* ── Official Sponsors ── */}
         <div className="mb-14 w-full flex flex-col items-center justify-center text-center">
@@ -47,34 +49,34 @@ export default function SponsorSection() {
           >
             Official Sponsors
           </p>
-          <div
-            className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mx-auto w-full"
-            style={{ maxWidth: "900px", margin: "0 auto" }}
+          <Stagger
+            className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mx-auto w-full max-w-[900px]"
+            gap={0.07}
           >
-            {hasSponsors
-              ? SPONSORS.map((sponsor) => (
-                  <a
-                    key={sponsor.id}
-                    href={sponsor.website ?? "#"}
-                    target={sponsor.website ? "_blank" : "_self"}
-                    rel="noopener noreferrer"
-                    title={sponsor.name}
-                    className="block transition-transform duration-200 hover:-translate-y-1 w-32 sm:w-36 md:w-40"
-                  >
-                    <div className="w-full h-14 bg-white rounded-lg border-2 border-[#0B0F19] shadow-[3px_3px_0px_#0B0F19] flex items-center justify-center p-2">
-                      <span className="text-xs font-bold text-[#0B0F19]">{sponsor.name}</span>
-                    </div>
-                  </a>
-                ))
-              : Array.from({ length: PLACEHOLDER_SPONSORS }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="w-32 sm:w-36 md:w-40 h-14 bg-white rounded-lg border-2 border-[#0B0F19] shadow-[3px_3px_0px_#0B0F19] flex items-center justify-center p-2"
-                  >
-                    <span className="text-xs font-bold text-gray-400">Sponsor {i + 1}</span>
-                  </div>
-                ))}
-          </div>
+              {hasSponsors
+                ? SPONSORS.map((sponsor) => (
+                    <StaggerItem key={sponsor.id} className="w-32 sm:w-36 md:w-40">
+                      <a
+                        href={sponsor.website ?? "#"}
+                        target={sponsor.website ? "_blank" : "_self"}
+                        rel="noopener noreferrer"
+                        title={sponsor.name}
+                        className="block transition-transform duration-200 hover:-translate-y-1"
+                      >
+                        <div className="w-full h-14 bg-white rounded-lg border-2 border-[#0B0F19] shadow-[3px_3px_0px_#0B0F19] flex items-center justify-center p-2">
+                          <span className="text-xs font-bold text-[#0B0F19]">{sponsor.name}</span>
+                        </div>
+                      </a>
+                    </StaggerItem>
+                  ))
+                : Array.from({ length: PLACEHOLDER_SPONSORS }).map((_, i) => (
+                    <StaggerItem key={i} className="w-32 sm:w-36 md:w-40">
+                      <div className="w-full h-14 bg-white rounded-lg border-2 border-[#0B0F19] shadow-[3px_3px_0px_#0B0F19] flex items-center justify-center p-2">
+                        <span className="text-xs font-bold text-gray-400">Sponsor {i + 1}</span>
+                      </div>
+                    </StaggerItem>
+                  ))}
+          </Stagger>
         </div>
 
         {/* ── Media Partners ── */}
@@ -85,34 +87,34 @@ export default function SponsorSection() {
           >
             Media Partners
           </p>
-          <div
-            className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 mx-auto w-full"
-            style={{ maxWidth: "720px", margin: "0 auto" }}
+          <Stagger
+            className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 mx-auto w-full max-w-[720px]"
+            gap={0.06}
           >
             {hasMedia
               ? MEDIA_PARTNERS.map((partner) => (
-                  <a
-                    key={partner.id}
-                    href={partner.website ?? "#"}
-                    target={partner.website ? "_blank" : "_self"}
-                    rel="noopener noreferrer"
-                    title={partner.name}
-                    className="block transition-transform duration-200 hover:-translate-y-1 w-28 sm:w-32"
-                  >
-                    <div className="w-full h-12 bg-white rounded-lg border-2 border-[#0B0F19] shadow-[2px_2px_0px_#0B0F19] flex items-center justify-center p-2">
-                      <span className="text-[11px] font-bold text-[#0B0F19]">{partner.name}</span>
-                    </div>
-                  </a>
+                  <StaggerItem key={partner.id} className="w-28 sm:w-32">
+                    <a
+                      href={partner.website ?? "#"}
+                      target={partner.website ? "_blank" : "_self"}
+                      rel="noopener noreferrer"
+                      title={partner.name}
+                      className="block transition-transform duration-200 hover:-translate-y-1"
+                    >
+                      <div className="w-full h-12 bg-white rounded-lg border-2 border-[#0B0F19] shadow-[2px_2px_0px_#0B0F19] flex items-center justify-center p-2">
+                        <span className="text-[11px] font-bold text-[#0B0F19]">{partner.name}</span>
+                      </div>
+                    </a>
+                  </StaggerItem>
                 ))
               : Array.from({ length: PLACEHOLDER_MEDIA }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="w-28 sm:w-32 h-12 bg-white rounded-lg border-2 border-[#0B0F19] shadow-[2px_2px_0px_#0B0F19] flex items-center justify-center p-2"
-                  >
-                    <span className="text-[11px] font-bold text-gray-400">Media {i + 1}</span>
-                  </div>
+                  <StaggerItem key={i} className="w-28 sm:w-32">
+                    <div className="w-full h-12 bg-white rounded-lg border-2 border-[#0B0F19] shadow-[2px_2px_0px_#0B0F19] flex items-center justify-center p-2">
+                      <span className="text-[11px] font-bold text-gray-400">Media {i + 1}</span>
+                    </div>
+                  </StaggerItem>
                 ))}
-          </div>
+          </Stagger>
         </div>
 
       </div>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import KilasBalikCarousel from "@/components/ui/KilasBalikCarousel";
+import Reveal from "@/components/anim/Reveal";
 
 /**
  * Kilas Balik CREANOMIC 2026 Section — Y2K Pop Art.
@@ -36,7 +37,7 @@ export default function EventSection() {
       <div className="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col items-center justify-center text-center">
 
         {/* Section Image Header with generous ~64px gap to content */}
-        <div className="w-full flex justify-center items-center mb-14 sm:mb-16 md:mb-20 text-center">
+        <Reveal className="w-full flex justify-center items-center mb-14 sm:mb-16 md:mb-20 text-center" y={22}>
           <Image
             src="/images/headers/kilas-balik.png"
             alt="Kilas Balik CREANOMIC 2026"
@@ -47,12 +48,12 @@ export default function EventSection() {
             priority
             unoptimized
           />
-        </div>
+        </Reveal>
 
         {/* ── 3-Screen Dynamic Carousel (Sharp Borders & Auto-Play 5s) ── */}
-        <div className="w-full flex justify-center items-center mx-auto text-center">
+        <Reveal className="w-full flex justify-center items-center mx-auto text-center" scale={0.97} y={34}>
           <KilasBalikCarousel autoPlayInterval={5000} />
-        </div>
+        </Reveal>
 
       </div>
 

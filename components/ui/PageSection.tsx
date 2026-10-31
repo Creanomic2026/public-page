@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import SectionHeader from "@/components/ui/SectionHeader";
+import Reveal from "@/components/anim/Reveal";
 
 /**
  * PageSection — wrapper section standar homepage.
@@ -45,7 +46,7 @@ export default function PageSection({
             <SectionHeader title={title} subtitle={subtitle} />
           </div>
         )}
-        {children}
+        <Reveal y={26}>{children}</Reveal>
       </div>
     </section>
   );

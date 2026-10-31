@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
 /**
@@ -7,6 +10,7 @@ import type { ReactNode } from "react";
  * - Pre-title & judul Slackey dengan outline
  * - Badge "student-fair" + "2026"
  * - sphere-deco.png menindih batas bawah section, sama seperti homepage
+ * - Elemen masuk bergantian dengan spring pop-art
  */
 interface PageHeroProps {
   preTitle?: string;
@@ -17,6 +21,8 @@ interface PageHeroProps {
   titleClassName?: string;
 }
 
+const spring = { type: "spring" as const, stiffness: 130, damping: 16 };
+
 export default function PageHero({
   preTitle,
   title,
@@ -25,6 +31,17 @@ export default function PageHero({
   secondaryCta,
   titleClassName = "text-4xl sm:text-6xl md:text-8xl",
 }: PageHeroProps) {
+  const reduceMotion = useReducedMotion();
+
+  const rise = (delay = 0) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 24 },
+          animate: { opacity: 1, y: 0 },
+          transition: { ...spring, delay },
+        };
+
   return (
     <section className="hero-stripe-bg relative w-full overflow-visible">
       {/* Soft white glow, sama seperti hero homepage */}
@@ -38,8 +55,9 @@ export default function PageHero({
 
       <div className="relative z-10 mx-auto flex w-full max-w-[1180px] flex-col items-center px-6 pb-[150px] pt-[120px] text-center sm:px-8 md:pt-[150px]">
         {preTitle && (
-          <p
+          <motion.p
             className="text-2xl leading-tight text-white sm:text-4xl md:text-5xl"
+            {...rise(0.05)}
             style={{
               fontFamily: "var(--font-slackey)",
               WebkitTextStroke: "1.5px #F849C1",
@@ -47,11 +65,14 @@ export default function PageHero({
             }}
           >
             {preTitle}
-          </p>
+          </motion.p>
         )}
 
-        <h1
+        <motion.h1
           className={`mt-2 leading-[1.05] text-white ${titleClassName}`}
+          initial={reduceMotion ? false : { opacity: 0, y: 30, scale: 0.9, rotate: -1 }}
+          animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+          transition={{ type: "spring", stiffness: 150, damping: 13, delay: 0.12 }}
           style={{
             fontFamily: "var(--font-slackey)",
             WebkitTextStroke: "1px #0B0F19",
@@ -60,38 +81,59 @@ export default function PageHero({
           }}
         >
           {title}
-        </h1>
+        </motion.h1>
 
         {subtitle && (
-          <p
+          <motion.p
             className="mt-6 max-w-2xl text-sm font-semibold leading-relaxed text-white sm:text-base md:text-lg"
+            {...rise(0.28)}
             style={{
               fontFamily: "var(--font-work-sans)",
               textShadow: "0 1px 4px rgba(0,0,0,0.35)",
             }}
           >
             {subtitle}
-          </p>
+          </motion.p>
         )}
 
         {(cta || secondaryCta) && (
-          <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row">
+          <motion.div
+            className="mt-7 flex flex-col items-center gap-3 sm:flex-row"
+            {...rise(0.4)}
+          >
             {cta && (
-              <a href={cta.href} className="btn-primary-y2k">
+              <motion.a
+                href={cta.href}
+                className="btn-primary-y2k"
+                whileHover={reduceMotion ? undefined : { scale: 1.06, rotate: -1.5 }}
+                whileTap={reduceMotion ? undefined : { scale: 0.95 }}
+                transition={spring}
+              >
                 {cta.label}
-              </a>
+              </motion.a>
             )}
             {secondaryCta && (
-              <a href={secondaryCta.href} className="btn-outline-y2k">
+              <motion.a
+                href={secondaryCta.href}
+                className="btn-outline-y2k"
+                whileHover={reduceMotion ? undefined : { scale: 1.06, rotate: 1.5 }}
+                whileTap={reduceMotion ? undefined : { scale: 0.95 }}
+                transition={spring}
+              >
                 {secondaryCta.label}
-              </a>
+              </motion.a>
             )}
-          </div>
+          </motion.div>
         )}
       </div>
 
       {/* Sphere & star deco di batas bawah hero — sama seperti homepage */}
-      <div className="pointer-events-none absolute bottom-0 left-1/2 z-20 flex w-[118vw] max-w-none -translate-x-1/2 translate-y-[45.5%] select-none justify-center overflow-visible">
+      <motion.div
+        className="pointer-events-none absolute bottom-0 left-1/2 z-20 flex w-[118vw] max-w-none -translate-x-1/2 translate-y-[45.5%] select-none justify-center overflow-visible"
+        initial={reduceMotion ? false : { opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
+      >
         <Image
           src="/images/hero/sphere-deco.png"
           alt="CREANOMIC Y2K Decorative Spheres & Stars"
@@ -101,7 +143,7 @@ export default function PageHero({
           unoptimized
           priority
         />
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import Reveal from "@/components/anim/Reveal";
 import type { FilosofiItem } from "@/types";
 
 const FILOSOFI_DATA: FilosofiItem[] = [
@@ -38,6 +40,7 @@ const FILOSOFI_DATA: FilosofiItem[] = [
 export default function FilosofiSection() {
   const [activeId, setActiveId] = useState(FILOSOFI_DATA[0].id);
   const active = FILOSOFI_DATA.find((f) => f.id === activeId)!;
+  const reduceMotion = useReducedMotion();
 
   return (
     <section
@@ -51,7 +54,7 @@ export default function FilosofiSection() {
       <div className="relative z-10 w-full max-w-[1280px] mx-auto px-4 md:px-8 lg:px-16 flex flex-col items-center justify-center text-center">
 
         {/* Section Image Header with generous ~64px gap to content */}
-        <div className="w-full flex justify-center items-center mb-14 sm:mb-16 md:mb-20 text-center">
+        <Reveal className="w-full flex justify-center items-center mb-14 sm:mb-16 md:mb-20 text-center" y={22}>
           <Image
             src="/images/headers/filosofi-makna.png"
             alt="Filosofi & Makna"
@@ -62,13 +65,16 @@ export default function FilosofiSection() {
             priority
             unoptimized
           />
-        </div>
+        </Reveal>
 
         <div className="flex flex-wrap justify-center items-center gap-3 mb-8 mx-auto w-full text-center">
           {FILOSOFI_DATA.map((item) => (
-            <button
+            <motion.button
               key={item.id}
               onClick={() => setActiveId(item.id)}
+              whileHover={reduceMotion ? undefined : { y: -2, rotate: -1 }}
+              whileTap={reduceMotion ? undefined : { scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide transition-all duration-200 border-2"
               style={{
                 fontFamily: "var(--font-work-sans, 'Work Sans', sans-serif)",
@@ -79,15 +85,20 @@ export default function FilosofiSection() {
               }}
             >
               {item.title}
-            </button>
+            </motion.button>
           ))}
         </div>
 
         <div className="max-w-2xl mx-auto w-full text-center">
-          <div
-            key={activeId}
-            className="pop-card p-8 animate-fade-in"
-          >
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={activeId}
+              initial={reduceMotion ? false : { opacity: 0, y: 14, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={reduceMotion ? undefined : { opacity: 0, y: -10, scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 190, damping: 20 }}
+              className="pop-card p-8"
+            >
             <p
               className="text-xs font-bold uppercase tracking-widest mb-2 text-center"
               style={{
@@ -116,7 +127,8 @@ export default function FilosofiSection() {
             >
               {active.content}
             </p>
-          </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>

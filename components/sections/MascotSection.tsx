@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "@/components/anim/Reveal";
 
 /**
  * Mascot Section — Y2K Pop Art.
@@ -20,7 +21,7 @@ export default function MascotSection() {
       <div className="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col items-center justify-center text-center">
 
         {/* ── Top Image Header: MEET OUR MASCOT with generous ~64px gap to content ── */}
-        <div className="w-full flex justify-center items-center mb-14 sm:mb-16 md:mb-20 text-center">
+        <Reveal className="w-full flex justify-center items-center mb-14 sm:mb-16 md:mb-20 text-center" y={22}>
           <Image
             src="/images/headers/meet-our-mascot.png"
             alt="Meet Our Mascot"
@@ -31,17 +32,17 @@ export default function MascotSection() {
             priority
             unoptimized
           />
-        </div>
+        </Reveal>
 
         {/* ── Center Square Mascot Card + Side Indicator Pills ── */}
-        <div className="relative flex items-center justify-center max-w-md mx-auto mb-6 text-center">
+        <Reveal className="relative flex items-center justify-center max-w-md mx-auto mb-6 text-center" scale={0.92} y={30}>
           {/* Square Card */}
           <div
             className="w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 pop-card flex items-center justify-center p-6 relative overflow-hidden mx-auto"
           >
             {/* Mascot Character Placeholder / Image */}
             <div className="w-full h-full flex flex-col items-center justify-center text-center p-4">
-              <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-[#0B0F19] bg-[#FFD43D] flex items-center justify-center shadow-[4px_4px_0px_#0B0F19] mb-3">
+              <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full border-4 border-[#0B0F19] bg-[#FFD43D] flex items-center justify-center shadow-[4px_4px_0px_#0B0F19] mb-3 animate-float">
                 <span className="text-5xl sm:text-6xl select-none">🤖</span>
               </div>
               <p
@@ -58,7 +59,7 @@ export default function MascotSection() {
             <span className="w-1.5 sm:w-2 h-8 rounded-full bg-[#0B24F3] border border-[#0B0F19]" />
             <span className="w-1.5 sm:w-2 h-8 rounded-full bg-[#F849C1] border border-[#0B0F19]" />
           </div>
-        </div>
+        </Reveal>
 
       </div>
     </section>

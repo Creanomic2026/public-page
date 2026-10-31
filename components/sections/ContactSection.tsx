@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "@/components/anim/Reveal";
 
 /**
  * PIT CREANOMIC Section — Y2K Pop Art.
@@ -18,7 +19,7 @@ export default function ContactSection() {
       }}
     >
       {/* Full-width centering wrapper */}
-      <div className="w-full flex justify-center items-center px-4 text-center mx-auto">
+      <Reveal className="w-full flex justify-center items-center px-4 text-center mx-auto" y={24} scale={0.95}>
         <Image
           src="/images/headers/pit-creanomic.png"
           alt="PIT CREANOMIC"
@@ -29,7 +30,7 @@ export default function ContactSection() {
           priority
           unoptimized
         />
-      </div>
+      </Reveal>
     </section>
   );
 }
