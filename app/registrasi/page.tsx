@@ -1,43 +1,97 @@
-import React from 'react';
+import PageHero from "@/components/ui/PageHero";
+import PageSection from "@/components/ui/PageSection";
+import RibbonTitle from "@/components/ui/RibbonTitle";
+import PitBanner from "@/components/ui/PitBanner";
+
+export const metadata = {
+  title: "Registrasi",
+  description:
+    "Daftar dan masuk ke dashboard CREANOMIC 2026 untuk mengikuti kompetisi dan rangkaian acara.",
+};
+
+const DASHBOARD_REGISTER = "https://dash.creanomic.web.id/register";
+const DASHBOARD_LOGIN = "https://dash.creanomic.web.id/login";
 
 export default function RegistrasiPage() {
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-x-hidden" style={{ backgroundColor: "var(--surface)" }}>
-      
-      <div className="pointer-events-none absolute left-1/4 top-1/4 h-96 w-96 rounded-full opacity-20 blur-[120px]" style={{ backgroundColor: "var(--brand-purple)" }} />
-      <div className="pointer-events-none absolute bottom-1/4 right-1/4 h-[500px] w-[500px] rounded-full opacity-30 blur-[150px]" style={{ backgroundColor: "var(--brand-deep-blue)" }} />
+    <>
+      <PageHero
+        preTitle="Ready to Join?"
+        title="CREANOMIC 2026"
+        subtitle="Daftarkan dirimu dan timmu, lalu pilih cabang lomba yang ingin kamu ikuti."
+        cta={{ href: DASHBOARD_REGISTER, label: "DAFTAR SEKARANG →" }}
+        secondaryCta={{ href: DASHBOARD_LOGIN, label: "SUDAH PUNYA AKUN? MASUK" }}
+      />
 
-      <section className="relative z-10 flex w-full max-w-[1280px] flex-col items-center px-6 text-center md:px-12">
-        
-        <div className="mb-6 font-label text-sm font-medium tracking-[0.3em]" style={{ color: "var(--brand-sky-blue)" }}>
-          Blooming Innovation
+      <PageSection paddingTop={240} width="narrow">
+        <div className="grid gap-12 sm:grid-cols-2 sm:gap-8">
+          {/* Peserta baru */}
+          <div className="relative flex h-full flex-col pt-6">
+            <RibbonTitle
+              title="PESERTA BARU"
+              className="absolute -top-1 left-1/2 z-10 -translate-x-1/2"
+            />
+            <div className="pop-card flex h-full flex-col px-6 pb-8 pt-12 text-center">
+              <h2
+                className="text-2xl text-white"
+                style={{
+                  fontFamily: "var(--font-slackey)",
+                  textShadow: "2px 2px 0px #0B24F3",
+                }}
+              >
+                BUAT AKUN
+              </h2>
+              <p
+                className="mt-3 flex-1 text-sm leading-relaxed text-white"
+                style={{ fontFamily: "var(--font-work-sans)" }}
+              >
+                Buat akun di dashboard CREANOMIC, lengkapi data diri dan tim,
+                lalu pilih cabang lomba yang ingin diikuti.
+              </p>
+              <a
+                href={DASHBOARD_REGISTER}
+                className="btn-primary-y2k mt-6 w-full justify-center"
+              >
+                DAFTAR SEKARANG →
+              </a>
+            </div>
+          </div>
+
+          {/* Sudah punya akun */}
+          <div className="relative flex h-full flex-col pt-6">
+            <RibbonTitle
+              title="SUDAH PUNYA AKUN"
+              className="absolute -top-1 left-1/2 z-10 -translate-x-1/2"
+            />
+            <div className="pop-card flex h-full flex-col px-6 pb-8 pt-12 text-center">
+              <h2
+                className="text-2xl text-white"
+                style={{
+                  fontFamily: "var(--font-slackey)",
+                  textShadow: "2px 2px 0px #0B24F3",
+                }}
+              >
+                MASUK DASHBOARD
+              </h2>
+              <p
+                className="mt-3 flex-1 text-sm leading-relaxed text-white"
+                style={{ fontFamily: "var(--font-work-sans)" }}
+              >
+                Masuk untuk memantau status pendaftaran, mengunggah berkas, dan
+                melihat pengumuman terbaru dari panitia.
+              </p>
+              <a
+                href={DASHBOARD_LOGIN}
+                className="btn-primary-y2k mt-6 w-full justify-center"
+              >
+                MASUK SEKARANG →
+              </a>
+            </div>
+          </div>
         </div>
+      </PageSection>
 
-        <h1 className="mb-6 font-display text-5xl font-bold leading-[1.1] tracking-tight md:text-7xl" style={{ color: "var(--on-surface)" }}>
-          WUJUDKAN IDE KREATIF ANDA <br className="hidden md:block" />
-          <span className="text-gradient">
-            BERSAMA CREANOMIC 2026
-          </span>
-        </h1>
-
-        <p className="mx-auto mb-[48px] max-w-2xl font-body text-[18px] leading-[28px]" style={{ color: "var(--text-secondary)" }}>
-        </p>
-
-        <div className="flex flex-col items-center gap-[24px] sm:flex-row sm:justify-center">
-          
-          <a 
-            href="#"
-            className="group relative inline-flex items-center justify-center rounded-full px-[32px] py-[16px] font-label text-[14px] font-bold uppercase tracking-[0.05em] text-white transition-all duration-300 hover:scale-[1.03] hover:shadow-[var(--glow-sky)]"
-            style={{ background: "var(--gradient-primary)" }}
-          >
-            Daftar Sekarang
-          </a>
-
-          
-
-        </div>
-        
-      </section>
-    </section>
+      <PitBanner />
+    </>
   );
 }
