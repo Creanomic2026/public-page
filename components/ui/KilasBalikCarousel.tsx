@@ -41,6 +41,35 @@ interface KilasBalikCarouselProps {
   autoPlayInterval?: number;
 }
 
+/** Slide foto dokumentasi + caption overlay ala poster Y2K. */
+function ImageSlide({ item, sizes }: { item: KilasBalikItem; sizes: string }) {
+  return (
+    <>
+      <Image
+        src={item.image!}
+        alt={item.title}
+        fill
+        sizes={sizes}
+        className="object-cover"
+        unoptimized
+      />
+      <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-[#0B0F19]/95 via-[#0B0F19]/45 to-transparent px-4 pb-4 pt-14 text-left">
+        {item.category && (
+          <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#FFD43D]">
+            {item.category}
+          </p>
+        )}
+        <p
+          className="mt-1 text-sm font-extrabold leading-tight text-white sm:text-base"
+          style={{ fontFamily: "var(--font-work-sans, 'Work Sans', sans-serif)" }}
+        >
+          {item.title}
+        </p>
+      </div>
+    </>
+  );
+}
+
 /**
  * Kilas Balik 3-Screen Carousel — Y2K Pop Art.
  * - 3 Layar Sharp: Kiri (kecil), Tengah (besar & aktif), Kanan (kecil)
@@ -108,13 +137,7 @@ export default function KilasBalikCarousel({
         >
           <div className="w-full h-full flex flex-col items-center justify-center text-center border-2 border-dashed border-[#0B24F3]/30 p-3 sm:p-4 relative overflow-hidden bg-[#FAFBFF]">
             {prevItem.image ? (
-              <Image
-                src={prevItem.image}
-                alt={prevItem.title}
-                fill
-                className="object-cover"
-                unoptimized
-              />
+              <ImageSlide item={prevItem} sizes="340px" />
             ) : (
               <div className="flex flex-col items-center justify-center px-1">
                 <span className="text-3xl lg:text-4xl mb-2 opacity-80">📸</span>
@@ -141,13 +164,7 @@ export default function KilasBalikCarousel({
           {/* Inner Dashed Frame / Content */}
           <div className="w-full h-full flex flex-col items-center justify-center text-center border-2 border-dashed border-[#0B24F3]/40 p-4 sm:p-5 relative overflow-hidden bg-gradient-to-b from-white to-[#F8F9FF]">
             {activeItem.image ? (
-              <Image
-                src={activeItem.image}
-                alt={activeItem.title}
-                fill
-                className="object-cover"
-                unoptimized
-              />
+              <ImageSlide item={activeItem} sizes="420px" />
             ) : (
               <div className="flex flex-col items-center justify-center max-w-[90%] px-2">
                 <span className="text-4xl sm:text-5xl mb-3 transition-transform duration-200 group-hover:scale-110">
@@ -211,13 +228,7 @@ export default function KilasBalikCarousel({
         >
           <div className="w-full h-full flex flex-col items-center justify-center text-center border-2 border-dashed border-[#0B24F3]/30 p-3 sm:p-4 relative overflow-hidden bg-[#FAFBFF]">
             {nextItem.image ? (
-              <Image
-                src={nextItem.image}
-                alt={nextItem.title}
-                fill
-                className="object-cover"
-                unoptimized
-              />
+              <ImageSlide item={nextItem} sizes="340px" />
             ) : (
               <div className="flex flex-col items-center justify-center px-1">
                 <span className="text-3xl lg:text-4xl mb-2 opacity-80">📸</span>

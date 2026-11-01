@@ -18,6 +18,7 @@ export const KILAS_BALIK_DATA: KilasBalikItem[] = [
     title: "Opening Ceremony & Expo",
     category: "CREANOMIC 2025",
     year: "2025",
+    image: "/images/documentation/opening-ceremony.jpg",
     description: "Pembukaan meriah dengan pameran karya inovasi dan expo UMKM kreatif se-Jawa Timur.",
   },
   {
@@ -25,6 +26,7 @@ export const KILAS_BALIK_DATA: KilasBalikItem[] = [
     title: "National Business Competition",
     category: "COMPETITION",
     year: "2025",
+    image: "/images/documentation/business-competition.jpg",
     description: "Ajang kompetisi ide bisnis mahasiswa berskala nasional dengan dewan juri praktisi industri.",
   },
   {
@@ -32,6 +34,7 @@ export const KILAS_BALIK_DATA: KilasBalikItem[] = [
     title: "Awarding Night & Exhibition",
     category: "CLOSING",
     year: "2025",
+    image: "/images/documentation/awarding-night.jpg",
     description: "Malam penganugerahan pemenang kompetisi diiringi pameran karya terbaik dan pertunjukan musik.",
   },
   {
@@ -39,6 +42,7 @@ export const KILAS_BALIK_DATA: KilasBalikItem[] = [
     title: "Talkshow & Mentoring Session",
     category: "TALKSHOW",
     year: "2025",
+    image: "/images/documentation/talkshow-mentoring.jpg",
     description: "Sesi diskusi interaktif bersama para founder startup dan pakar ekonomi kreatif.",
   },
   {
@@ -46,7 +50,7 @@ export const KILAS_BALIK_DATA: KilasBalikItem[] = [
     title: "Creative Workshop & Showcase",
     category: "WORKSHOP",
     year: "2025",
+    image: "/images/documentation/creative-showcase.jpg",
     description: "Workshop hands-on peningkatan skill kreatif dan showcase produk unggulan mahasiswa.",
   },
 ];
-

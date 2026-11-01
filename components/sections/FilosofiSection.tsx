@@ -15,6 +15,13 @@ const FILOSOFI_DATA: FilosofiItem[] = [
       "Logo CREANOMIC terinspirasi dari hexagram — simbol yang merepresentasikan keseimbangan antara kreativitas dan logika bisnis.",
   },
   {
+    id: "logotype",
+    title: "Logotype",
+    subtitle: "Wajah Baru CREANOMIC",
+    content:
+      "Logotype CREANOMIC memakai font dengan lekukan yang tidak kaku dan dinamis, mencerminkan fleksibilitas pemikiran mahasiswa Vokasi yang adaptif, inovatif, dan berani keluar dari batasan konvensional. Susunan bertingkat — “CREA” di atas dan “NOMIC” di bawah — memaknai CREA (Creative Economy) sebagai fondasi gagasan dan NOMIC (Innovation Centre) sebagai landasan pergerakan inovasi. Struktur yang seakan saling mengunci mewakili kolaborasi, jaringan lintas kampus, serta sinergi antara teknologi, seni, dan bisnis. Logotype ini menggambarkan wajah baru semangat penggerak CREANOMIC yang lebih terbuka, kreatif, dan inspiratif. Lima warna menyusunnya, dengan Biru sebagai warna inti yang melambangkan kedalaman berpikir, kecerdasan, serta visi masa depan yang profesional dan berbasis teknologi.",
+  },
+  {
     id: "nama",
     title: "Makna Nama",
     subtitle: "Creative Economic",
@@ -26,7 +33,7 @@ const FILOSOFI_DATA: FilosofiItem[] = [
     title: "Filosofi Warna",
     subtitle: "Y2K Pop Art Palette",
     content:
-      "Blue (#0B24F3) sebagai fondasi kepercayaan. Hot Pink (#F849C1) menyuntikkan energi dan kreativitas. Yellow (#FFD43D) sebagai aksen kegembiraan.",
+      "Logotype CREANOMIC memakai lima warna dengan Biru (#0B24F3) sebagai warna inti yang melambangkan kedalaman berpikir, kecerdasan, serta visi masa depan yang profesional dan berbasis teknologi. Hot Pink (#F849C1) menyuntikkan energi dan kreativitas, sementara Yellow (#FFD43D) menjadi aksen kegembiraan.",
   },
   {
     id: "maskot",
@@ -38,7 +45,7 @@ const FILOSOFI_DATA: FilosofiItem[] = [
 ];
 
 export default function FilosofiSection() {
-  const [activeId, setActiveId] = useState(FILOSOFI_DATA[0].id);
+  const [activeId, setActiveId] = useState("logotype");
   const active = FILOSOFI_DATA.find((f) => f.id === activeId)!;
   const reduceMotion = useReducedMotion();
 
