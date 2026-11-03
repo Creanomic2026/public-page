@@ -44,7 +44,7 @@ export const NEWS_POSTS: NewsPost[] = [
             name: "Sophia Adelia Nabila",
             prodi: "Teknologi Informasi",
             angkatan: "2026",
-            type: "Musik & Vokal",
+            type: "Tari Tradisional",
           },
           {
             no: 4,
@@ -173,6 +173,10 @@ export const NEWS_POSTS: NewsPost[] = [
       role: "Ketua Pelaksana CREANOMIC 2026",
       name: "Putri Firyal Atshilla Mumtaza",
       nim: "253140507111025",
+    },
+    contact: {
+      name: "Asri",
+      phone: "08973103772",
     },
   },
 ];

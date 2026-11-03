@@ -255,6 +255,28 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
                 </div>
               </div>
             )}
+
+            {/* Contact person */}
+            {post.contact && (
+              <div className="mt-10 flex flex-col gap-3 rounded-2xl border-[3px] border-[#0B0F19] bg-[#FFD43D] px-5 py-4 shadow-[4px_4px_0px_#0B0F19] sm:flex-row sm:items-center sm:justify-between">
+                <div style={{ fontFamily: "var(--font-work-sans)" }}>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#0B0F19]/70">
+                    Narahubung
+                  </p>
+                  <p className="mt-0.5 text-sm font-bold text-[#0B0F19]">
+                    {post.contact.name}
+                  </p>
+                </div>
+                <a
+                  href={`tel:${post.contact.phone}`}
+                  className="inline-flex w-max items-center gap-2 rounded-full border-2 border-[#0B0F19] bg-white px-4 py-2 text-sm font-bold text-[#0B0F19] shadow-[3px_3px_0px_#0B0F19] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_#0B0F19]"
+                  style={{ fontFamily: "var(--font-work-sans)" }}
+                >
+                  <span aria-hidden>📞</span>
+                  {post.contact.phone}
+                </a>
+              </div>
+            )}
           </article>
 
           {/* Actions */}

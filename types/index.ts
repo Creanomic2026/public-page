@@ -84,6 +84,11 @@ export interface NewsSignatory {
   nim?: string;
 }
 
+export interface NewsContact {
+  name: string;
+  phone: string;
+}
+
 export interface NewsPost {
   slug: string;
   title: string;
@@ -98,4 +103,5 @@ export interface NewsPost {
   talentGroups?: NewsTalentGroup[];
   closing?: string;
   signatory?: NewsSignatory;
+  contact?: NewsContact;
 }
