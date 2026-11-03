@@ -26,6 +26,7 @@ export default function Navbar() {
     { href: "/merch", label: "Merchandise" },
     { href: "/competition", label: "Competition" },
     { href: "/talkshow", label: "Talkshow" },
+    { href: "/news", label: "News" },
     { href: "/login", label: "Login" },
   ];
 

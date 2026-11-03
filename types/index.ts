@@ -60,3 +60,42 @@ export interface FilosofiItem {
   content: string;
   image?: string;
 }
+
+// ─── News / Berita Acara ──────────────────────────────────────────────────────
+export interface NewsTalent {
+  no: number;
+  name: string;
+  prodi?: string;
+  angkatan?: string;
+  type?: string;
+}
+
+export interface NewsTalentGroup {
+  id: string;
+  title: string;
+  talents: NewsTalent[];
+}
+
+export interface NewsSignatory {
+  place: string;
+  date: string;
+  role: string;
+  name: string;
+  nim?: string;
+}
+
+export interface NewsPost {
+  slug: string;
+  title: string;
+  shortTitle: string;
+  excerpt: string;
+  category: string;
+  date: string; // ISO date, untuk sorting
+  dateLabel: string; // label tanggal bahasa Indonesia
+  number?: string;
+  pdf?: string;
+  paragraphs: string[];
+  talentGroups?: NewsTalentGroup[];
+  closing?: string;
+  signatory?: NewsSignatory;
+}

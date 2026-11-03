@@ -6,5 +6,6 @@ export const NAV_LINKS: NavItem[] = [
   { label: "Merchandise", href: "/merch" },
   { label: "Competition", href: "/competition" },
   { label: "Talkshow", href: "/talkshow" },
+  { label: "News", href: "/news" },
   { label: "Registrasi", href: "/registrasi" },
 ];
