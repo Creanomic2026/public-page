@@ -8,25 +8,18 @@ import type { FilosofiItem } from "@/types";
 
 const FILOSOFI_DATA: FilosofiItem[] = [
   {
-    id: "hexagram",
-    title: "The Hexagram",
-    subtitle: "Simbol Utama",
-    content:
-      "Logo CREANOMIC terinspirasi dari hexagram — simbol yang merepresentasikan keseimbangan antara kreativitas dan logika bisnis.",
-  },
-  {
     id: "logotype",
     title: "Logotype",
     subtitle: "Wajah Baru CREANOMIC",
     content:
-      "Logotype CREANOMIC memakai font dengan lekukan yang tidak kaku dan dinamis, mencerminkan fleksibilitas pemikiran mahasiswa Vokasi yang adaptif, inovatif, dan berani keluar dari batasan konvensional. Susunan bertingkat — “CREA” di atas dan “NOMIC” di bawah — memaknai CREA (Creative Economy) sebagai fondasi gagasan dan NOMIC (Innovation Centre) sebagai landasan pergerakan inovasi. Struktur yang seakan saling mengunci mewakili kolaborasi, jaringan lintas kampus, serta sinergi antara teknologi, seni, dan bisnis. Logotype ini menggambarkan wajah baru semangat penggerak CREANOMIC yang lebih terbuka, kreatif, dan inspiratif. Lima warna menyusunnya, dengan Biru sebagai warna inti yang melambangkan kedalaman berpikir, kecerdasan, serta visi masa depan yang profesional dan berbasis teknologi.",
+      "Logotype CREANOMIC memakai font dengan lekukan yang tidak kaku dan dinamis, mencerminkan fleksibilitas pemikiran mahasiswa Vokasi yang adaptif, inovatif, dan berani keluar dari batasan konvensional. Susunan bertingkat — “CREA” di atas dan “NOMIC” di bawah — memaknai CREA (Creative) sebagai fondasi gagasan dan NOMIC (Innovation Centre) sebagai landasan pergerakan inovasi. Struktur yang seakan saling mengunci mewakili kolaborasi, jaringan lintas kampus, serta sinergi antara teknologi, seni, dan bisnis. Logotype ini menggambarkan wajah baru semangat penggerak CREANOMIC yang lebih terbuka, kreatif, dan inspiratif. Lima warna menyusunnya, dengan Biru sebagai warna inti yang melambangkan kedalaman berpikir, kecerdasan, serta visi masa depan yang profesional dan berbasis teknologi.",
   },
   {
     id: "nama",
     title: "Makna Nama",
-    subtitle: "Creative Economic",
+    subtitle: "Creative and Innovation Centre",
     content:
-      "CREANOMIC adalah gabungan dari 'Creative' dan 'Economic' — mencerminkan semangat ekonomi kreatif yang berinovasi tanpa batas.",
+      "CREANOMIC merupakan singkatan dari Creative and Innovation Centre — pusat kreativitas dan inovasi yang menjadi ruang kolaborasi generasi muda untuk berkarya, berinovasi, dan menciptakan dampak nyata.",
   },
   {
     id: "warna",
@@ -34,13 +27,6 @@ const FILOSOFI_DATA: FilosofiItem[] = [
     subtitle: "Y2K Pop Art Palette",
     content:
       "Logotype CREANOMIC memakai lima warna dengan Biru (#0B24F3) sebagai warna inti yang melambangkan kedalaman berpikir, kecerdasan, serta visi masa depan yang profesional dan berbasis teknologi. Hot Pink (#F849C1) menyuntikkan energi dan kreativitas, sementara Yellow (#FFD43D) menjadi aksen kegembiraan.",
-  },
-  {
-    id: "maskot",
-    title: "Filosofi Maskot",
-    subtitle: "CREANO",
-    content:
-      "CREANO adalah representasi generasi kreatif yang berani berinovasi — dirancang dengan estetika Y2K untuk mencerminkan semangat anak muda.",
   },
 ];
 

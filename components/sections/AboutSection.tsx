@@ -35,7 +35,7 @@ export default function AboutSection() {
                 lineHeight: "1.8",
               }}
             >
-              CREANOMIC (Creative Economy Innovation Summit) 2026 hadir sebagai wadah bagi pemuda
+              CREANOMIC (Creative and Innovation Centre) 2026 hadir sebagai wadah bagi pemuda
               untuk mengasah kemampuan mereka melalui berbagai kompetisi dan kegiatan interaktif.
               CREANOMIC 2026 tidak hanya sekadar kompetisi, tetapi juga menjadi platform edukatif
               dan networking yang menghadirkan pembicara inspiratif, stand pameran industri dan

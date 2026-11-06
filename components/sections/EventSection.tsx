@@ -3,13 +3,12 @@ import KilasBalikCarousel from "@/components/ui/KilasBalikCarousel";
 import Reveal from "@/components/anim/Reveal";
 
 /**
- * Kilas Balik CREANOMIC 2026 Section — Y2K Pop Art.
+ * Kilas Balik CREANOMIC 2025 Section — Y2K Pop Art.
  * - Dot-grid white background
  * - Custom image header: kilas-balik.png
- * - 3-Screen Carousel (tengah paling besar, samping kiri/kanan lebih kecil)
+ * - Single large image carousel with caption overlay
  * - Sharp border (tanpa rounded) sesuai desain
- * - Otomatis berganti setiap 5 detik
- * - Tombol geser kiri/kanan di card tengah muncul saat di-hover
+ * - Otomatis berganti setiap 4 detik
  * - Card tambahan dapat diedit di @/data/kilasBalik.ts
  */
 export default function EventSection() {
@@ -40,7 +39,7 @@ export default function EventSection() {
         <Reveal className="w-full flex justify-center items-center mb-14 sm:mb-16 md:mb-20 text-center" y={22}>
           <Image
             src="/images/headers/kilas-balik.png"
-            alt="Kilas Balik CREANOMIC 2026"
+            alt="Kilas Balik CREANOMIC 2025"
             width={1024}
             height={111}
             className="w-full max-w-[600px] sm:max-w-[720px] h-auto object-contain mx-auto"
@@ -50,9 +49,9 @@ export default function EventSection() {
           />
         </Reveal>
 
-        {/* ── 3-Screen Dynamic Carousel (Sharp Borders & Auto-Play 5s) ── */}
+        {/* ── Single Large Image Carousel (Auto-Play 4s) ── */}
         <Reveal className="w-full flex justify-center items-center mx-auto text-center" scale={0.97} y={34}>
-          <KilasBalikCarousel autoPlayInterval={5000} />
+          <KilasBalikCarousel autoPlayInterval={4000} />
         </Reveal>
 
       </div>

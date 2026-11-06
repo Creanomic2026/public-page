@@ -14,6 +14,7 @@ export interface Sponsor {
   logo: string; // path to image in /public/images/sponsors/
   website?: string;
   tier?: SponsorTier; // optional — no longer required for display
+  dark?: boolean; // white/light logo — render on a dark tile
 }
 
 // ─── Event / Portfolio ────────────────────────────────────────────────────────

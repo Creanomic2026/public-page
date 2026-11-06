@@ -31,9 +31,9 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   metadataBase: new URL(SITE_URL),
   keywords: [
-    "CREANOMIC", "Creative Economic Expo", "Festival Ekonomi Kreatif",
-    "Universitas Brawijaya", "Fakultas Vokasi", "UMKM", "Wirausaha",
-    "Kompetisi Bisnis", "Malang", "2026", "Innovation", "Creative Economy",
+    "CREANOMIC", "Creative and Innovation Centre", "Creative Economy",
+    "Festival Ekonomi Kreatif", "Universitas Brawijaya", "Fakultas Vokasi",
+    "UMKM", "Wirausaha", "Kompetisi Bisnis", "Malang", "2026", "Innovation",
   ],
   authors: [{ name: "Tim CREANOMIC 2026", url: SITE_URL }],
   creator: "Fakultas Vokasi Universitas Brawijaya",

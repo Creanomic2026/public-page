@@ -1,7 +1,7 @@
 // ─── Site Metadata ────────────────────────────────────────────────────────────
 export const SITE_NAME = "CREANOMIC 2026";
 export const SITE_DESCRIPTION =
-  "Creative Economic Expo — Festival ekonomi kreatif tahunan Fakultas Vokasi Universitas Brawijaya. Blooming Innovation, Creating Impact.";
+  "CREANOMIC (Creative and Innovation Centre) 2026 — festival ekonomi kreatif tahunan Fakultas Vokasi Universitas Brawijaya. Shaping Innovation, Creating Impact.";
 export const SITE_URL = "https://creanomic.com";
 export const SITE_TAGLINE = "Shaping Innovation, Creating Impact";
 

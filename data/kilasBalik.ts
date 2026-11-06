@@ -16,7 +16,7 @@ export const KILAS_BALIK_DATA: KilasBalikItem[] = [
   {
     id: 1,
     title: "Opening Ceremony & Expo",
-    category: "CREANOMIC 2025",
+    category: "OPENING CEREMONY",
     year: "2025",
     image: "/images/documentation/opening-ceremony.jpg",
     description: "Pembukaan meriah dengan pameran karya inovasi dan expo UMKM kreatif se-Jawa Timur.",
@@ -52,5 +52,50 @@ export const KILAS_BALIK_DATA: KilasBalikItem[] = [
     year: "2025",
     image: "/images/documentation/creative-showcase.jpg",
     description: "Workshop hands-on peningkatan skill kreatif dan showcase produk unggulan mahasiswa.",
+  },
+  {
+    id: 6,
+    title: "Talkshow: Empowering Young Innovators",
+    category: "TALKSHOW",
+    year: "2025",
+    image: "/images/documentation/talkshow-empowering-innovators.jpg",
+    description:
+      "Sesi inspiratif bersama Ali Said, Konsultan PT Indonesia Asahan Aluminium, tentang semangat kewirausahaan generasi muda.",
+  },
+  {
+    id: 7,
+    title: "Exhibition & Tenant Booths",
+    category: "EXHIBITION",
+    year: "2025",
+    image: "/images/documentation/expo-tenant-booths.jpg",
+    description:
+      "Deretan booth pameran karya mahasiswa dan tenant kreatif yang ramai dikunjungi pengunjung.",
+  },
+  {
+    id: 8,
+    title: "Awarding Business Case",
+    category: "AWARDING",
+    year: "2025",
+    image: "/images/documentation/awarding-business-case.jpg",
+    description:
+      "Momen pemberian penghargaan kepada para pemenang Business Case dengan total hadiah jutaan rupiah.",
+  },
+  {
+    id: 9,
+    title: "Homeband Performance",
+    category: "ENTERTAINMENT",
+    year: "2025",
+    image: "/images/documentation/homeband-performance.jpg",
+    description:
+      "Penampilan homeband mahasiswa yang memeriahkan panggung CREANOMIC.",
+  },
+  {
+    id: 10,
+    title: "Crowd & Community Vibes",
+    category: "ATMOSPHERE",
+    year: "2025",
+    image: "/images/documentation/crowd-interaction.jpg",
+    description:
+      "Antusiasme pengunjung dan peserta saat mengikuti rangkaian acara CREANOMIC.",
   },
 ];
