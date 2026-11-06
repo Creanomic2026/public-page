@@ -1,0 +1,18 @@
+<svg width="488" height="522" viewBox="0 0 488 522" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g filter="url(#filter0_f_599_681)">
+<use xlink:href="#stroke0_599_681" fill="url(#paint0_radial_599_681)"/>
+<use xlink:href="#stroke0_599_681" fill="white" fill-opacity="0.02"/>
+</g>
+<defs>
+<filter id="filter0_f_599_681" x="-0.000391006" y="-0.000391006" width="487.968" height="521.906" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="9.8127" result="effect1_foregroundBlur_599_681"/>
+</filter>
+<radialGradient id="paint0_radial_599_681" cx="0" cy="0" r="1" gradientTransform="matrix(260.364 37.2881 -34.6665 242.054 227.654 260.362)" gradientUnits="userSpaceOnUse">
+<stop offset="0.2" stop-color="#F849C1"/>
+<stop offset="1" stop-color="#FFD43D"/>
+</radialGradient>
+<path id="stroke0_599_681" d="M205.465 357.641L111.349 458.875L59.3057 402.896L155.139 299.815H19.625V220.649H152.773L56.9424 117.57L108.984 61.5918L109.65 62.3086L109.655 62.3027L205.465 165.359V19.625H279.063V166.518L376.597 61.6074L428.639 117.586L332.822 220.649H468.342V299.815H330.466L426.945 403.592L374.903 459.57L374.238 458.854L374.232 458.859L279.064 356.492L279.063 502.28H205.465V357.641Z"/>
+</defs>
+</svg>
